@@ -1,0 +1,23 @@
+Package: getFertilizer
+Type: Package
+Title: Retrieve, Summarize and Visualize the Fertilizer Data in USA
+Version: 0.0.1
+Authors@R: c(
+    person("Wenlong", "Liu", role = c("aut","cre"),
+        email = 'wliu14@ncsu.edu')
+    )
+Maintainer: Wenlong Liu <wliu14@ncsu.edu>
+Description: Summarize the count-level fertilizer data in USA from 1945 to 2012.  Users can quickly retrieve 
+    fertilizer data in Tidy format, summarize the fertilizer data to 
+License: GPL-3 + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: dplyr, 
+    usfertilizer, 
+    ggplot2, 
+    sf
+Suggests: knitr,
+    rmarkdown,
+    covr,
+    testthat
+VignetteBuilder: knitr
