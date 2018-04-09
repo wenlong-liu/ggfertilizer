@@ -1,0 +1,34 @@
+---
+title: "Raw_data_generation"
+author: "Wenlong"
+date: "4/8/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This file will generate raw data for R package: getFertilizer.
+
+```{r}
+require(dplyr)
+require(ggplot2)
+require(usfertilizer)
+data("us_fertilizer_county")
+```
+
+# Extract data from usfertilizer
+```{r}
+set.seed(123456)
+data = us_fertilizer_county
+random_sample = sample.int(n = nrow(data), size = floor(.05*nrow(data)), replace = F)
+fertilizer = data[random_sample,]
+summary(fertilizer)
+```
+## save the data into rawdata.
+
+```{r}
+devtools::use_data(fertilizer, compress = "xz",overwrite = T)
+```
+

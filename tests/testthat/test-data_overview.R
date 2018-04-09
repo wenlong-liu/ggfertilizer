@@ -1,6 +1,6 @@
 context("data_overview")
-
-wake = get_data(counties = "wake")
+data = fertilizer
+wake = get_data(data, counties = "wake")
 
 test_that("Test the data overview of Wake county data.",
           {

@@ -5,6 +5,7 @@
 #'    by FIPS code for a long-term analysis.  Description of FIPS codes is available via
 #'    \code{[here](https://en.wikipedia.org/wiki/FIPS_county_code)}
 #'
+#'#'@param data the dataset to work with, generally the full usfertilizer or its subsets.
 #'@param counties counties of interest, defalut: all avaible counties.
 #'@param states states of interest, defalt: all avaialble states.
 #'@param overlap_state_county Logic. If true, the function will overlaping
@@ -17,15 +18,19 @@
 #'@import dplyr
 #'@seealso \code{link(get_data)}
 #'@examples
-#'    get_FIPS(counties = "Wake", states = "NC")
-#'    get_FIPS(states = "NC")
+#'    data = fertilizer
+#'    get_FIPS(data, counties = "Wake", states = "NC")
+#'    get_FIPS(data, states = "NC")
 #'
-get_FIPS <- function(counties = NULL,
+get_FIPS <- function(data,
+                     counties = NULL,
                      states = NULL,
                      overlap_state_county = TRUE,
                      combine_state_county = TRUE
 ){
-  output = get_data(counties = counties,
+  output = get_data(
+           data = data,
+           counties = counties,
            states = states,
            overlap_state_county = overlap_state_county,
            combine_state_county = combine_state_county

@@ -39,7 +39,7 @@ data_overview <- function(fertilizer_data){
     Fert_min = as.numeric(min(fertilizer_data$Quantity))
     cat("\n The range of fertilization quantity is ", Fert_min, "to", Fert_max, ";")
 
-    Fert_Type = fertilizer_data$Fertilizer[!duplicated(fertilizer_data$Fertilizer)]
+    Fert_Type = fertilizer_data$Nutrient[!duplicated(fertilizer_data$Nutrient)]
     Farm_Type = fertilizer_data$Farm.Type[!duplicated(fertilizer_data$Farm.Type)]
     cat("\n The fertilizer is applied as", Fert_Type, "and at the locations of", Farm_Type, ".")
 }

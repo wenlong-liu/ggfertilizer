@@ -4,6 +4,7 @@
 #'  of fertilizer application quantity.  The fertilizer application type includes farm and non-farms.
 #'  The dataset was primarily cleaned into Tidy data.  Details are availalble via <https://cran.r-project.org/web/packages/usfertilizer/vignettes/Introduction.html>
 #'
+#'@param data the dataset to work with, generally the full usfertilizer or its subsets.
 #'@param nutrient fertilizer type of interest, default: both Nitrogen and Phosphorus.
 #'@param farm_type where the fertilizer was applied. e.g. farm, nonfarm.
 #'@param years start year to show data, e.g. 1994, 2000:2005.
@@ -27,9 +28,10 @@
 #'@import dplyr
 #'@seealso \code{link(get_FIPS)}
 #'@examples
-#' get_data(counties = "Wake")
-#' get_data(years = 1990)
-#' get_data(nutrient = "N", years = 2003, states = "NC", FIPSs = 37145)
+#' data = fertilizer
+#' get_data(data, counties = "Wake")
+#' get_data(data, years = 1990)
+#' get_data(data, nutrient = "N", years = 2003, states = "NC", FIPSs = 37145)
 #'
 get_data <- function(data,
                         nutrient = NULL,
@@ -53,10 +55,10 @@ get_data <- function(data,
     nutrient = c("N","P")
 }
   else{
-    lapply(tolower(nutrient),check_list,check_list_data = tolower(data$Fertilizer),
-           warning_content= "Fertilizer")
+    lapply(tolower(nutrient),check_list,check_list_data = tolower(data$Nutrient),
+           warning_content= "Nutrient")
   }
-  output = filter(output, Fertilizer %in% toupper(nutrient) )
+  output = filter(output, Nutrient %in% toupper(nutrient) )
   # check input type.
   if (is.null(input_type)){
     input_type = c("fertilizer","manure")
