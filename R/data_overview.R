@@ -7,7 +7,8 @@
 #' @export
 #'
 #' @examples
-#' wake_fertilizer = get_data(counties = "wake")
+#' data = fertilizer
+#' wake_fertilizer = get_data(data, counties = "wake")
 #' data_overview(wake_fertilizer)
 #'
 #'

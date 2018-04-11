@@ -32,14 +32,14 @@ get_data(data, nutrient = NULL, input_type = NULL, farm_type = NULL,
 
 \item{long_min}{the minimum longitude of area of interest.}
 
+\item{FIPSs}{FIPS numbers of interest, defalut: all the counties.}
+
 \item{overlap_state_county}{Logic. If true, the function will overlaping
 the input of states and counties. If false, the function will return
 results either in the states or in the counties.}
 
 \item{combine_state_county}{Logic. If true, the county will be changed into
 county, state, e.g. Wake, NC; If false, no changes.}
-
-\item{FIPS}{FIPS numbers of interest, defalut: all the counties.}
 }
 \value{
 A tibble with tidy data.

@@ -8,10 +8,12 @@ Authors@R: c(
     )
 Maintainer: Wenlong Liu <wliu14@ncsu.edu>
 Description: Summarize the count-level fertilizer data in USA from 1945 to 2012.  Users can quickly retrieve 
-    fertilizer data in Tidy format, summarize the fertilizer data to 
+    fertilizer data in Tidy format. There are also built-in APIs for users to conduct spatial analysis and 
+    provide reproducible research output. 
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 2.10)
 Imports: dplyr, 
     usfertilizer, 
     ggplot2, 

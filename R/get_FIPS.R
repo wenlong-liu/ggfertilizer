@@ -5,7 +5,7 @@
 #'    by FIPS code for a long-term analysis.  Description of FIPS codes is available via
 #'    \code{[here](https://en.wikipedia.org/wiki/FIPS_county_code)}
 #'
-#'#'@param data the dataset to work with, generally the full usfertilizer or its subsets.
+#'@param data the dataset to work with, generally the full usfertilizer or its subsets.
 #'@param counties counties of interest, defalut: all avaible counties.
 #'@param states states of interest, defalt: all avaialble states.
 #'@param overlap_state_county Logic. If true, the function will overlaping

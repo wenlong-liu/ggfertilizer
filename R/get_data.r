@@ -14,7 +14,7 @@
 #'@param lat_min the minmum latitude of area of interest.
 #'@param long_max the maximum longitude of area of interest.
 #'@param long_min the minimum longitude of area of interest.
-#'@param FIPS FIPS numbers of interest, defalut: all the counties.
+#'@param FIPSs FIPS numbers of interest, defalut: all the counties.
 #'@param input_type the source of nutrient, e.g. fertilizer or manure.
 #'@param overlap_state_county Logic. If true, the function will overlaping
 #'       the input of states and counties. If false, the function will return

@@ -13,7 +13,8 @@ data_overview(fertilizer_data)
 Provides a summary of filtered data.
 }
 \examples{
-wake_fertilizer = get_data(counties = "wake")
+data = fertilizer
+wake_fertilizer = get_data(data, counties = "wake")
 data_overview(wake_fertilizer)
 
 

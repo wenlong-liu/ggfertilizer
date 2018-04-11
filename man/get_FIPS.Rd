@@ -8,6 +8,8 @@ get_FIPS(data, counties = NULL, states = NULL,
   overlap_state_county = TRUE, combine_state_county = TRUE)
 }
 \arguments{
+\item{data}{the dataset to work with, generally the full usfertilizer or its subsets.}
+
 \item{counties}{counties of interest, defalut: all avaible counties.}
 
 \item{states}{states of interest, defalt: all avaialble states.}
@@ -27,8 +29,6 @@ The function will fetch and return the FIPS for the counties of interest.
    As some counties will change due to various causes, it is easier to track the counties
    by FIPS code for a long-term analysis.  Description of FIPS codes is available via
    \code{[here](https://en.wikipedia.org/wiki/FIPS_county_code)}
-
-#'@param data the dataset to work with, generally the full usfertilizer or its subsets.
 }
 \examples{
    data = fertilizer
