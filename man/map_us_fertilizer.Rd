@@ -4,13 +4,15 @@
 \alias{map_us_fertilizer}
 \title{visualize the fertilizer data in the whole contiouse U.S.}
 \usage{
-map_us_fertilizer(year, nutrient, farm_type = NULL, input_type = NULL,
-  fun = NULL, level = "county", projection = NULL, parapmeters = NULL,
-  orientation = NULL, xlim = NULL, ylim = NULL)
+map_us_fertilizer(years, nutrient, farm_type = NULL, input_type = NULL,
+  states = NULL, counties = NULL, fun = NULL, annual_change = FALSE,
+  level = "county", facet = NULL, coord_fix_ratio = 1.3,
+  trans = "identity", fill_var_type = NULL, viridis_palette = "viridis",
+  viridis_direction = -1, viridis_end = 0.9, projection = NULL,
+  parapmeters = NULL, orientation = NULL, xlim = NULL, ylim = NULL,
+  na.rm = TRUE, default_theme = TRUE)
 }
 \arguments{
-\item{year}{the temporal coverage of the data to visualize. See link for available period.}
-
 \item{nutrient}{the nutrient type of fertilizer from usfertilizer.  Has to be
 N, P or both.}
 
@@ -22,9 +24,11 @@ N, P or both.}
 
 \item{level}{the spatial resolution of map, should be county or state, default county.}
 
+\item{facet}{the facet to draw subplots.}
+
 \item{projection}{the projection parameters for spatial projection.}
 
-\item{facet}{the facet to draw subplots.}
+\item{year}{the temporal coverage of the data to visualize. See link for available period.}
 }
 \description{
 visualize the fertilizer data in the whole contiouse U.S.

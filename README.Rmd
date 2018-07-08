@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 ## Retrieve, Summarize and Visualize the Fertilizer Data in USA
 
 Provides a user-friendly API to further dig in County-Level Fertilizer data in USA, provided by USGS. 
-
+             
 ## Installation
 
 This package can be installed via github using devtools.
@@ -37,6 +37,8 @@ devtools::install_github("wenlong-liu/getFertilizer")
 
 ## Quick Start
 
+
+
 ## Comments and Questions
 
 If you have any problems or questions, feel free to open an issue [here](https://github.com/wenlong-liu/getFertilizer/issues).
@@ -46,4 +48,5 @@ If you have any problems or questions, feel free to open an issue [here](https:/
 [GPL](https://github.com/wenlong-liu/getFertilizer/blob/master/LICENSE)
 
 ## Code of conduct
+
 Please note that this project is released with a [Contributor Code of Conduct](https://github.com/wenlong-liu/getFertilizer/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms.

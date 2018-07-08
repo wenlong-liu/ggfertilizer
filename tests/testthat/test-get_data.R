@@ -8,8 +8,8 @@ year1_wrong = 128355
 year_error = c(1, 1903, 2019, 24556, -1, 50, 22222222222, -8882039 )
 county_error = c("aer", "wes","3w2")
 state_error = c("2w", "esa", 0)
-FIPS_error = c(10000000,332,-10,3)
-long_error = c(-000, 1332,35, 99, "abc")
+FIPS_error = c(10000000, 332, -10, 3)
+long_error = c(-000, 1332, 35, 99, "abc")
 fert_error = c(1,"2,'S")
 
 # test year input.
@@ -58,6 +58,7 @@ test_that("If the FIPS codes are incorrect or out of bound, we can not retrieve 
   })
 
 ###############
+
 # test parameters of the function.
 county = "Lincoln"
 FIPS = 37109

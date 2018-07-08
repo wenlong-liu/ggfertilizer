@@ -5,55 +5,59 @@
 #'
 #'
 
-data_preparation <- function(data = "us_fertilizer_county",
-                         years,
-                         nutrient,
-                         fun = NULL,
-                         facet = NULL,
-                         farm_type = NULL,
-                         input_type = NULL,
-                         fun = NULL,
-                         level = "county",
-                         na.rm = TRUE,
+data_preparation <- function(data,
+                             years,
+                             nutrient,
+                             counties = NULL,
+                             states = NULL,
+                             farm_type = NULL,
+                             input_type = NULL,
+                             lat_max = NULL,
+                             lat_min = NULL,
+                             long_max = NULL,
+                             long_min = NULL,
+                             FIPSs = NULL,
+                             overlap_state_county = TRUE,
+                             combine_state_county = FALSE,
+                             fun = NULL,
+                             facet = NULL,
+                             level = "county",
+                             na.rm = TRUE,
                          ...)
 {
-  # if fertilizer dataset is not loaded, load it.
-  if(!(exists(data) && is.data.frame(get(data)))){
-    data(data)
-  }
-
   # retrieve data from usfertilizer R package.
   # return a dataframe
   result = get_data(data = data,
-                    year,
-                    nutrient,
-                    counties = NULL,
-                    states = NULL,
-                    farm_type = NULL,
-                    input_type = NULL,
-                    lat_max = NULL,
-                    lat_min = NULL,
-                    long_max = NULL,
-                    long_min = NULL,
-                    FIPSs = NULL,
+                    years = years,
+                    nutrient = nutrient,
+                    counties = counties,
+                    states = states,
+                    farm_type = farm_type,
+                    input_type = input_type,
+                    lat_max = lat_max,
+                    lat_min = lat_min,
+                    long_max = long_max,
+                    long_min = long_min,
+                    FIPSs = FIPSs,
                     overlap_state_county = TRUE,
                     combine_state_county = FALSE,
                     ...)
 
-  # process the dataframe for ggplot2.
-  # Key feature: facet, fun.
 
+  # check the level of data.
+  # state level will sum up the county level data.
   if(is.null(level) | !(level %in% c("county", "state"))){
     stop("The spatial resolution must be specified.")
   }
   else if(level == "state"){
-    #
+    # summarise within all the states.
     result = result %>%
-      group_by(State) %>%
+      group_by_(State, facet) %>%
       summarise(Quantity = sum(Quantity, na.rm = na.rm)) %>%
       ungroup()
   }
 
+  return(result)
 
 }
 

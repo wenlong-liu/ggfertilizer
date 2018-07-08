@@ -4,7 +4,7 @@
 \name{fertilizer}
 \alias{fertilizer}
 \title{fertilizer}
-\format{A data frame with 582012rows and 11 variables:
+\format{A data frame with 31,279 rows and 12 variables:
 \describe{
   \item{FIPS}{FIPS is a combination of state and county codes, in character format.}
   \item{State}{The state abbr. of U.S.}

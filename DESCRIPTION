@@ -4,7 +4,8 @@ Title: Retrieve, Summarize and Visualize the Fertilizer Data in USA
 Version: 0.0.1
 Authors@R: c(
     person("Wenlong", "Liu", role = c("aut","cre"),
-        email = 'wliu14@ncsu.edu')
+        email = 'wliu14@ncsu.edu',
+        comment = c(ORCID = "0000-0002-2271-3541"))
     )
 Maintainer: Wenlong Liu <wliu14@ncsu.edu>
 Description: Summarize the count-level fertilizer data in USA from 1945 to 2012.  Users can quickly retrieve 
@@ -16,11 +17,13 @@ LazyData: true
 Depends: R (>= 2.10)
 Imports: dplyr, 
     usfertilizer, 
-    ggplot2, 
-    sf
+    stringr,
+    ggthemes,
+    ggplot2 (>= 3.0.0), 
+    sf,
+    mapproj
 Suggests: knitr,
     rmarkdown,
-    covr,
     testthat
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
