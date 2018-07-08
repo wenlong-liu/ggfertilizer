@@ -51,10 +51,16 @@ data_preparation <- function(data,
   }
   else if(level == "state"){
     # summarise within all the states.
-    result = result %>%
-      group_by_(State, facet) %>%
-      summarise(Quantity = sum(Quantity, na.rm = na.rm)) %>%
-      ungroup()
+    if (is.null(facet)){
+      result = result %>%
+        group_by_("State") %>%
+        summarise(Quantity = sum(Quantity, na.rm = na.rm))
+    }
+    else {
+      result = result %>%
+        group_by_("State", facet) %>%
+        summarise(Quantity = sum(Quantity, na.rm = na.rm))
+    }
   }
 
   return(result)

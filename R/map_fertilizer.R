@@ -67,7 +67,9 @@ map_us_fertilizer <- function(years,
                               years = years,
                               # for the data for all states.
                               states = states,
-                              counties = counties
+                              counties = counties,
+                              facet = facet,
+                              level = level
                               )
 
   ## Guess at variable type for filling
@@ -92,19 +94,27 @@ map_us_fertilizer <- function(years,
     stop("The map level for us fertilizer should be either county or state.")
   }
   else if(level == "state"){
-
-    ## not working.
-
+    names(state.name) = state.abb
     # add nutrient data with state level region.
-    nutrient_summary = nutrient_summary %>%
-      group_by(State) %>%
-      #rowwise() %>%
-      mutate(region = tolower(state.name[grep(State, state.abb)])) %>%
-      right_join(states_shape, by = "region")
-    head(nutrient_summary)
+    add_state <- function(data, state_shape, state.name){
+      data = data %>%
+        mutate(region = tolower(state.name[State])) %>%
+        right_join(states_shape, by = "region")
+    }
+
+    # there is warning which is suppressed. See below for details.
+    # https://github.com/tidyverse/dplyr/issues/2688
+    nutrient_summary = suppressWarnings(
+                         add_state(nutrient_summary,
+                                   state_shape,
+                                   state.name)
+                        )
 
     us_plot <- ggplot(nutrient_summary)+
-      geom_sf(aes(fill = Quantity), color = NA)
+      geom_polygon(aes(x = long, y = lat,
+                       fill = Quantity, group = group),
+                   color = "grey", size = 0.1)
+
   }
   else if(level == "county"){
     nutrient_summary = nutrient_summary %>%
@@ -190,6 +200,7 @@ map_us_fertilizer <- function(years,
 
   return(us_plot)
 }
+
 
 
 #' Create base map theme for further use.
