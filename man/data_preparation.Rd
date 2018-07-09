@@ -53,6 +53,8 @@ county, state, e.g. Wake, NC; If false, no changes.}
 \item{level}{the spatial resolution of map, should be county or state, default county.}
 
 \item{na.rm}{How to deal with NA values. Default: TRUE.}
+
+\item{...}{extra parameters for \code{link(get_data)}}
 }
 \value{
 A tibble with tidy data.
@@ -72,7 +74,7 @@ plot_data = data_preparation(data = us_fertilizer_county,
 head(plot_data)
 }
 \seealso{
-\code{link(data_overview), link(get_FIPS), link(get_FIPS)}
+\code{link(data_overview), link(get_FIPS), link(get_data)}
 }
 \author{
 Wenlong Liu

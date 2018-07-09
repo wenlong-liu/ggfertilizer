@@ -7,3 +7,4 @@
 ^README-.*\.png$
 ^codecov\.yml$
 ^data-raw$
+^docs$

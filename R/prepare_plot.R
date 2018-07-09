@@ -25,11 +25,12 @@
 #' @param level the spatial resolution of map, should be county or state, default county.
 #' @param facet the facet to draw subplots.
 #' @param na.rm How to deal with NA values. Default: TRUE.
+#' @param ... extra parameters for \code{link(get_data)}
 #' @author Wenlong Liu
 #' @export data_preparation
 #' @return A tibble with tidy data.
 #' @keywords datasets tidydata
-#' @seealso \code{link(data_overview), link(get_FIPS), link(get_FIPS)}
+#' @seealso \code{link(data_overview), link(get_FIPS), link(get_data)}
 #' @examples
 #' require(getFertilizer)
 #' require(usfertilizer)

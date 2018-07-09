@@ -9,8 +9,8 @@ map_us_fertilizer(data = us_fertilizer_county, Year, Nutrient,
   FIPSs = NULL, fun = NULL, annual_change = FALSE, level = "county",
   facet = NULL, trans = "identity", fill_var_type = NULL,
   viridis_palette = "viridis", viridis_direction = -1, viridis_end = 0.9,
-  projection = NULL, parapmeters = NULL, orientation = NULL,
-  xlim = NULL, ylim = NULL, na.rm = TRUE, coord_fix_ratio = 1.3,
+  projection = NULL, parameters = NULL, orientation = NULL, xlim = NULL,
+  ylim = NULL, na.rm = TRUE, coord_fix_ratio = 1.3,
   map_theme = theme_map_fertilizer())
 }
 \arguments{
@@ -28,6 +28,8 @@ N, P or both (NULL).}
 \item{State}{the states that will show in the plot,default: all states.}
 
 \item{County}{the counties that will show in the plot, default: all counties.}
+
+\item{FIPSs}{the FIPS code for counties in USA.}
 
 \item{fun}{the function to process data, not done yet.}
 
@@ -52,7 +54,7 @@ If -1, the order of colors is reversed.}
 
 \item{projection}{the projection name for spatial projection.}
 
-\item{parapmeters}{parapmeters for map projection.}
+\item{parameters}{parameters for map projection.}
 
 \item{orientation}{orientation for map projection.}
 

@@ -1,7 +1,7 @@
 Package: getFertilizer
 Type: Package
 Title: Retrieve, Summarize and Visualize the Fertilizer Data in USA
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: c(
     person("Wenlong", "Liu", role = c("aut","cre"),
         email = 'wliu14@ncsu.edu',
@@ -16,12 +16,17 @@ URL: https://github.com/wenlong-liu/getFertilizer, https://wenlong-liu.github.io
 BugReports: https://github.com/wenlong-liu/getFertilizer/issues
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 2.10)
+Depends: R (>= 2.10),
+    usfertilizer
 Imports: dplyr, 
-    usfertilizer, 
     stringr,
-    ggplot2 (>= 3.0.0), 
-    mapproj
+    ggplot2, 
+    mapproj,
+    maps,
+    scales,
+    viridis,
+    datasets,
+    stats
 Suggests: knitr,
     rmarkdown,
     testthat

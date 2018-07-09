@@ -9,6 +9,7 @@
 #' @param Input_Type the input source of fertilizer, should be manure, fertilizer.
 #' @param State the states that will show in the plot,default: all states.
 #' @param County the counties that will show in the plot, default: all counties.
+#' @param FIPSs the FIPS code for counties in USA.
 #' @param fun the function to process data, not done yet.
 #' @param annual_change to check if the data represent the annual change, default: FALSE.
 #' @param level the spatial resolution of map, should be county or state, default county.
@@ -22,7 +23,7 @@
 #'     If -1, the order of colors is reversed.
 #' @param viridis_end	The (corrected) hue in [0,1] at which the viridis colormap ends.
 #' @param projection the projection name for spatial projection.
-#' @param parapmeters parapmeters for map projection.
+#' @param parameters parameters for map projection.
 #' @param orientation orientation for map projection.
 #' @param xlim x axis limits for map project.
 #' @param ylim y axis limits for map project.
@@ -32,7 +33,6 @@
 #' @import ggplot2 maps usfertilizer
 #' @import mapproj
 #' @importFrom stringr str_pad
-#' @importFrom ggthemes theme_map
 #' @importFrom viridis scale_fill_viridis
 #' @importFrom scales percent comma
 #' @export map_us_fertilizer
@@ -74,7 +74,7 @@ map_us_fertilizer <- function(data = us_fertilizer_county,
 
                               # map projection arguments.
                               projection = NULL,
-                              parapmeters = NULL,
+                              parameters = NULL,
                               orientation = NULL,
                               xlim = NULL,
                               ylim = NULL,
@@ -82,11 +82,6 @@ map_us_fertilizer <- function(data = us_fertilizer_county,
                               na.rm = TRUE,
                               coord_fix_ratio = 1.3,
                               map_theme = theme_map_fertilizer()){
-
-  # if fertilizer dataset is not loaded, load it.
-  if(!(exists("us_fertilizer_county") && is.data.frame(get("us_fertilizer_county")))){
-  data("us_fertilizer_county")
-  }
 
   # Generate potential plots.
   states_shape <- map_data("state")
@@ -226,11 +221,10 @@ map_us_fertilizer <- function(data = us_fertilizer_county,
   if(!is.null(projection))
   {
     us_plot <- us_plot + coord_map(projection = projection,
-                                   parapmeters = parapmeters,
+                                   parameters = parameters,
                                    orientation = orientation,
                                    xlim = xlim,
-                                   ylim = ylim,
-                                   ...)
+                                   ylim = ylim)
   }
 
   # check if use the default map theme.
@@ -254,6 +248,7 @@ map_us_fertilizer <- function(data = us_fertilizer_county,
 #' @examples
 #' require(usfertilizer)
 #' require(getFertilizer)
+#' data(us_fertilizer_county)
 #' # Generate a map.
 #' us_plot <- map_us_fertilizer(Year = 2010, Nutrient = "N",
 #' level = "county", facet="Year", Farm_Type = "farm")

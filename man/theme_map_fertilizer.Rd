@@ -21,6 +21,7 @@ https://www.rdocumentation.org/packages/ggthemes/versions/3.5.0/source
 \examples{
 require(usfertilizer)
 require(getFertilizer)
+data(us_fertilizer_county)
 # Generate a map.
 us_plot <- map_us_fertilizer(Year = 2010, Nutrient = "N",
 level = "county", facet="Year", Farm_Type = "farm")

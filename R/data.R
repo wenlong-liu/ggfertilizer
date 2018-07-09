@@ -26,4 +26,6 @@
 
 if(getRversion() >= "2.15.1") utils::globalVariables(
     c("FIPS", "County", "Year", "Input.Type","Nutrient","Farm.Type", "State",
-           "INTPTLAT","INTPTLONG"))
+           "INTPTLAT","INTPTLONG","Quantity","us_fertilizer_county","region",
+      "subregion","fips","group","lat","state.abb","reformulate","county.fips",
+      "state_shape","long"))
