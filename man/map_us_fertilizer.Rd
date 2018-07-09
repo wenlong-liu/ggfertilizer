@@ -2,34 +2,90 @@
 % Please edit documentation in R/map_fertilizer.R
 \name{map_us_fertilizer}
 \alias{map_us_fertilizer}
-\title{visualize the fertilizer data in the whole contiouse U.S.}
+\title{Map the fertilizer data in U.S.A.}
 \usage{
-map_us_fertilizer(years, nutrient, farm_type = NULL, input_type = NULL,
-  states = NULL, counties = NULL, fun = NULL, annual_change = FALSE,
-  level = "county", facet = NULL, coord_fix_ratio = 1.3,
-  trans = "identity", fill_var_type = NULL, viridis_palette = "viridis",
-  viridis_direction = -1, viridis_end = 0.9, projection = NULL,
-  parapmeters = NULL, orientation = NULL, xlim = NULL, ylim = NULL,
-  na.rm = TRUE, default_theme = TRUE)
+map_us_fertilizer(data = us_fertilizer_county, Year, Nutrient,
+  Farm_Type = NULL, Input_Type = NULL, State = NULL, County = NULL,
+  FIPSs = NULL, fun = NULL, annual_change = FALSE, level = "county",
+  facet = NULL, trans = "identity", fill_var_type = NULL,
+  viridis_palette = "viridis", viridis_direction = -1, viridis_end = 0.9,
+  projection = NULL, parapmeters = NULL, orientation = NULL,
+  xlim = NULL, ylim = NULL, na.rm = TRUE, coord_fix_ratio = 1.3,
+  map_theme = theme_map_fertilizer())
 }
 \arguments{
-\item{nutrient}{the nutrient type of fertilizer from usfertilizer.  Has to be
-N, P or both.}
+\item{data}{the dataset to plot. default: us_fertilizer_county.}
 
-\item{farm_type}{the spatial source of fertilizer, should be farm, nonfarm or both.}
+\item{Year}{the temporal coverage of the data to visualize. See link for available period.}
 
-\item{input_type}{the input source of fertilizer, should be manure, fertilizer.}
+\item{Nutrient}{the nutrient type of fertilizer from usfertilizer.  Has to be
+N, P or both (NULL).}
 
-\item{fun}{the function to process data.}
+\item{Farm_Type}{the spatial source of fertilizer, should be farm, nonfarm or both.}
+
+\item{Input_Type}{the input source of fertilizer, should be manure, fertilizer.}
+
+\item{State}{the states that will show in the plot,default: all states.}
+
+\item{County}{the counties that will show in the plot, default: all counties.}
+
+\item{fun}{the function to process data, not done yet.}
+
+\item{annual_change}{to check if the data represent the annual change, default: FALSE.}
 
 \item{level}{the spatial resolution of map, should be county or state, default county.}
 
 \item{facet}{the facet to draw subplots.}
 
-\item{projection}{the projection parameters for spatial projection.}
+\item{trans}{the transformation parameter for scale_fill_viridis.}
 
-\item{year}{the temporal coverage of the data to visualize. See link for available period.}
+\item{fill_var_type}{the type of data to visualize, default: Null.}
+
+\item{viridis_palette}{the palette type for viridis,
+options:  “Viridis”,“magma”, “plasma”, "cividis", and “inferno.”}
+
+\item{viridis_direction}{Sets the order of colors in the scale.
+If 1, the default, colors are ordered from darkest to lightest.
+If -1, the order of colors is reversed.}
+
+\item{viridis_end}{The (corrected) hue in [0,1] at which the viridis colormap ends.}
+
+\item{projection}{the projection name for spatial projection.}
+
+\item{parapmeters}{parapmeters for map projection.}
+
+\item{orientation}{orientation for map projection.}
+
+\item{xlim}{x axis limits for map project.}
+
+\item{ylim}{y axis limits for map project.}
+
+\item{na.rm}{How to deal with NA values. Default: TRUE.}
+
+\item{coord_fix_ratio}{the ratio for fixed coordinate system, default: 1.3.}
+
+\item{map_theme}{the map theme for dataset. Default: theme_map_fertilizer()}
+}
+\value{
+a ggplot object.
 }
 \description{
 visualize the fertilizer data in the whole contiouse U.S.
 }
+\examples{
+require(usfertilizer)
+require(getFertilizer)
+data("us_fertilizer_county")
+
+us_plot <- map_us_fertilizer(Year = 2010, Nutrient = "N",
+level = "county",  Farm_Type = "farm",
+Input_Type = "Fertilizer",
+map_theme = theme_map_fertilizer(base_size = 12),
+viridis_palette = "inferno")
+
+us_plot
+}
+\seealso{
+\code{link(data_preparation)}
+}
+\keyword{map}

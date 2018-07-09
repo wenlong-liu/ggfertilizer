@@ -8,8 +8,26 @@ https://www.rdocumentation.org/packages/ggthemes/versions/3.5.0/source}
 \usage{
 theme_map_fertilizer(base_size = 9, base_family = "")
 }
+\arguments{
+\item{base_size}{the size for font in the map.}
+
+\item{base_family}{the font family in the map.}
+}
 \description{
 Create base map theme for further use.
 Adapted from theme maps.
 https://www.rdocumentation.org/packages/ggthemes/versions/3.5.0/source
+}
+\examples{
+require(usfertilizer)
+require(getFertilizer)
+# Generate a map.
+us_plot <- map_us_fertilizer(Year = 2010, Nutrient = "N",
+level = "county", facet="Year", Farm_Type = "farm")
+
+# Add user_defined map theme.
+us_plot = us_plot + theme_map_fertilizer(base_size = 12)
+}
+\author{
+Wenlong Liu
 }

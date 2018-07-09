@@ -1,34 +1,69 @@
-#' visualize the fertilizer data in the whole contiouse U.S.
-#'
-#' @param year the temporal coverage of the data to visualize. See link for available period.
-#' @param nutrient the nutrient type of fertilizer from usfertilizer.  Has to be
-#' N, P or both.
-#' @param facet the facet to draw subplots.
-#' @param farm_type the spatial source of fertilizer, should be farm, nonfarm or both.
-#' @param input_type the input source of fertilizer, should be manure, fertilizer.
-#' @param fun the function to process data.
+#' @title Map the fertilizer data in U.S.A.
+#' @name map_us_fertilizer
+#' @description  visualize the fertilizer data in the whole contiouse U.S.
+#' @param data the dataset to plot. default: us_fertilizer_county.
+#' @param Year the temporal coverage of the data to visualize. See link for available period.
+#' @param Nutrient the nutrient type of fertilizer from usfertilizer.  Has to be
+#'     N, P or both (NULL).
+#' @param Farm_Type the spatial source of fertilizer, should be farm, nonfarm or both.
+#' @param Input_Type the input source of fertilizer, should be manure, fertilizer.
+#' @param State the states that will show in the plot,default: all states.
+#' @param County the counties that will show in the plot, default: all counties.
+#' @param fun the function to process data, not done yet.
+#' @param annual_change to check if the data represent the annual change, default: FALSE.
 #' @param level the spatial resolution of map, should be county or state, default county.
-#' @param projection the projection parameters for spatial projection.
+#' @param facet the facet to draw subplots.
+#' @param trans the transformation parameter for scale_fill_viridis.
+#' @param fill_var_type the type of data to visualize, default: Null.
+#' @param viridis_palette the palette type for viridis,
+#'     options:  “Viridis”,“magma”, “plasma”, "cividis", and “inferno.”
+#' @param viridis_direction 	Sets the order of colors in the scale.
+#'     If 1, the default, colors are ordered from darkest to lightest.
+#'     If -1, the order of colors is reversed.
+#' @param viridis_end	The (corrected) hue in [0,1] at which the viridis colormap ends.
+#' @param projection the projection name for spatial projection.
+#' @param parapmeters parapmeters for map projection.
+#' @param orientation orientation for map projection.
+#' @param xlim x axis limits for map project.
+#' @param ylim y axis limits for map project.
+#' @param na.rm How to deal with NA values. Default: TRUE.
+#' @param coord_fix_ratio the ratio for fixed coordinate system, default: 1.3.
+#' @param map_theme the map theme for dataset. Default: theme_map_fertilizer()
 #' @import ggplot2 maps usfertilizer
 #' @import mapproj
 #' @importFrom stringr str_pad
 #' @importFrom ggthemes theme_map
 #' @importFrom viridis scale_fill_viridis
-#' @importFrom scales percent
+#' @importFrom scales percent comma
 #' @export map_us_fertilizer
+#' @return a ggplot object.
+#' @seealso \code{link(data_preparation)}
+#' @keywords map
+#' @examples
+#' require(usfertilizer)
+#' require(getFertilizer)
+#' data("us_fertilizer_county")
 #'
+#' us_plot <- map_us_fertilizer(Year = 2010, Nutrient = "N",
+#' level = "county",  Farm_Type = "farm",
+#' Input_Type = "Fertilizer",
+#' map_theme = theme_map_fertilizer(base_size = 12),
+#' viridis_palette = "inferno")
 #'
-map_us_fertilizer <- function(years,
-                              nutrient,
-                              farm_type = NULL,
-                              input_type = NULL,
-                              states = NULL,
-                              counties = NULL,
+#' us_plot
+map_us_fertilizer <- function(data = us_fertilizer_county,
+                              # parameters for data preparation.
+                              Year,
+                              Nutrient,
+                              Farm_Type = NULL,
+                              Input_Type = NULL,
+                              State = NULL,
+                              County = NULL,
+                              FIPSs = NULL,
                               fun = NULL,
                               annual_change = FALSE,
                               level = "county",
                               facet = NULL,
-                              coord_fix_ratio = 1.3,
 
                               # the colors for map.
                               trans = "identity",
@@ -43,8 +78,10 @@ map_us_fertilizer <- function(years,
                               orientation = NULL,
                               xlim = NULL,
                               ylim = NULL,
+
                               na.rm = TRUE,
-                              default_theme = TRUE){
+                              coord_fix_ratio = 1.3,
+                              map_theme = theme_map_fertilizer()){
 
   # if fertilizer dataset is not loaded, load it.
   if(!(exists("us_fertilizer_county") && is.data.frame(get("us_fertilizer_county")))){
@@ -60,14 +97,15 @@ map_us_fertilizer <- function(years,
     mutate(FIPS = str_pad(fips, 5, pad = "0"))
 
   # Genearte fertilizer data for each state.
-  nutrient_summary <- data_preparation(data = us_fertilizer_county,
-                              nutrient = nutrient,
-                              input_type = input_type,
-                              farm_type = farm_type,
-                              years = years,
+  nutrient_summary <- data_preparation(data = data,
+                              Nutrient = Nutrient,
+                              Input_Type = Input_Type,
+                              Farm_Type = Farm_Type,
+                              Year = Year,
                               # for the data for all states.
-                              states = states,
-                              counties = counties,
+                              State = State,
+                              County = County,
+                              FIPSs = FIPSs,
                               facet = facet,
                               level = level
                               )
@@ -118,26 +156,28 @@ map_us_fertilizer <- function(years,
   }
   else if(level == "county"){
     nutrient_summary = nutrient_summary %>%
-      right_join(counties_shape, by = "FIPS")
+      left_join(counties_shape, by = "FIPS")
     # plot data.
     us_plot <- ggplot(nutrient_summary)+
       geom_polygon(aes(x = long, y = lat,
-                      fill = Quantity, group = group),
-                   color = "grey", size = 0.05)+
+                      fill = Quantity, group = group))+
       geom_polygon(aes(x = long, y = lat, group = group),
                    fill = NA, data = states_shape, color = "lightgrey",
                    size = 0.1)
   }
 
   # add fixed coordinates ratio.
-  if(!is.null(coord_fix_ratio)){
+  if(!is.null(coord_fix_ratio)
+     | !is.na(coord_fix_ratio
+     | !(coord_fix_ratio == "none"))){
+
     us_plot = us_plot +
       coord_fixed(coord_fix_ratio)
   }
+
   # add color pallet.
   # This section was highly inspired by xx in getTBinR.
   # https://github.com/seabbs/getTBinR/blob/master/R/map_tb_burden.R
-
   if (annual_change) {
 
     if (fill_var_type) {
@@ -159,11 +199,13 @@ map_us_fertilizer <- function(years,
       us_plot <- us_plot +
         scale_fill_viridis(end = viridis_end,
                            direction = viridis_direction, discrete = TRUE,
+                           label = comma,
                            option = viridis_palette)
     }else{
       us_plot <- us_plot +
         scale_fill_viridis(end = viridis_end, trans = trans,
                            direction = viridis_direction, discrete = FALSE,
+                           label = comma,
                            option = viridis_palette)
     }
 
@@ -178,10 +220,9 @@ map_us_fertilizer <- function(years,
   {
     us_plot <- us_plot +
       facet_wrap(reformulate(facet,"." ))
-    print("facet length  = 1")
   }
 
-  # add projection.
+  # add projection system.
   if(!is.null(projection))
   {
     us_plot <- us_plot + coord_map(projection = projection,
@@ -193,9 +234,9 @@ map_us_fertilizer <- function(years,
   }
 
   # check if use the default map theme.
-  if (default_theme){
+  if (!is.null(map_theme)){
     us_plot <- us_plot +
-      theme_map_fertilizer()
+      map_theme
   }
 
   return(us_plot)
@@ -206,9 +247,20 @@ map_us_fertilizer <- function(years,
 #' Create base map theme for further use.
 #' Adapted from theme maps.
 #' https://www.rdocumentation.org/packages/ggthemes/versions/3.5.0/source
+#' @param base_size the size for font in the map.
+#' @param base_family the font family in the map.
+#' @export theme_map_fertilizer
+#' @author Wenlong Liu
+#' @examples
+#' require(usfertilizer)
+#' require(getFertilizer)
+#' # Generate a map.
+#' us_plot <- map_us_fertilizer(Year = 2010, Nutrient = "N",
+#' level = "county", facet="Year", Farm_Type = "farm")
 #'
-#'
-#'
+#' # Add user_defined map theme.
+#' us_plot = us_plot + theme_map_fertilizer(base_size = 12)
+
 
 theme_map_fertilizer <- function(base_size = 9, base_family = "") {
   theme_bw(base_size = base_size, base_family = base_family) %+replace%

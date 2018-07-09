@@ -2,17 +2,80 @@
 % Please edit documentation in R/prepare_plot.R
 \name{data_preparation}
 \alias{data_preparation}
-\title{The built-in function of data preparation for mapping and plotting.}
+\title{Prepare data for visualization.}
 \usage{
-data_preparation(data, years, nutrient, counties = NULL, states = NULL,
-  farm_type = NULL, input_type = NULL, lat_max = NULL, lat_min = NULL,
+data_preparation(data, Year, Nutrient, County = NULL, State = NULL,
+  Farm_Type = NULL, Input_Type = NULL, lat_max = NULL, lat_min = NULL,
   long_max = NULL, long_min = NULL, FIPSs = NULL,
   overlap_state_county = TRUE, combine_state_county = FALSE, fun = NULL,
-  facet = NULL, level = "county", na.rm = TRUE, ...)
+  annual_change = NULL, facet = NULL, level = "county", na.rm = TRUE,
+  ...)
+}
+\arguments{
+\item{data}{the dataset to plot. default: us_fertilizer_county.}
+
+\item{Year}{the temporal coverage of the data to visualize. See link for available period.}
+
+\item{Nutrient}{the nutrient type of fertilizer from usfertilizer.  Has to be
+N, P or both (NULL).}
+
+\item{County}{the counties that will show in the plot, default: all counties.}
+
+\item{State}{the states that will show in the plot,default: all states.}
+
+\item{Farm_Type}{the spatial source of fertilizer, should be farm, nonfarm or both.}
+
+\item{Input_Type}{the input source of fertilizer, should be manure, fertilizer.}
+
+\item{lat_max}{the maximum latitude of area of interest.}
+
+\item{lat_min}{the minmum latitude of area of interest.}
+
+\item{long_max}{the maximum longitude of area of interest.}
+
+\item{long_min}{the minimum longitude of area of interest.}
+
+\item{FIPSs}{FIPS numbers of interest, defalut: all the counties.}
+
+\item{overlap_state_county}{Logic. If true, the function will overlaping
+the input of states and counties. If false, the function will return
+results either in the states or in the counties.}
+
+\item{combine_state_county}{Logic. If true, the county will be changed into
+county, state, e.g. Wake, NC; If false, no changes.}
+
+\item{fun}{the function to process data, not done yet.}
+
+\item{annual_change}{to check if the data represent the annual change, default: FALSE.}
+
+\item{facet}{the facet to draw subplots.}
+
+\item{level}{the spatial resolution of map, should be county or state, default county.}
+
+\item{na.rm}{How to deal with NA values. Default: TRUE.}
+}
+\value{
+A tibble with tidy data.
 }
 \description{
 The built-in function of data preparation for mapping and plotting.
+If you want to fetch the whole data, please prefer using get_data().
+}
+\examples{
+require(getFertilizer)
+require(usfertilizer)
+data("us_fertilizer_county")
+
+plot_data = data_preparation(data = us_fertilizer_county,
+                             Year = 2003,
+                              Nutrient = "N")
+head(plot_data)
+}
+\seealso{
+\code{link(data_overview), link(get_FIPS), link(get_FIPS)}
 }
 \author{
 Wenlong Liu
 }
+\keyword{datasets}
+\keyword{tidydata}
