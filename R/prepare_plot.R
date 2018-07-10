@@ -84,7 +84,7 @@ data_preparation <- function(data,
   # check the level of data.
   # state level will sum up the county level data.
   if(is.null(level) | !(level %in% c("county", "state"))){
-    stop("The spatial resolution must be specified.")
+    stop("The spatial resolution must be specified as either county or state.")
   }
   else if(level == "state"){
     # summarise within all the states.

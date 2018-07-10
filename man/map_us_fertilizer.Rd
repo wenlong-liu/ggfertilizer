@@ -4,7 +4,7 @@
 \alias{map_us_fertilizer}
 \title{Map the fertilizer data in U.S.A.}
 \usage{
-map_us_fertilizer(data = us_fertilizer_county, Year, Nutrient,
+map_us_fertilizer(data = "us_fertilizer_county", Year, Nutrient,
   Farm_Type = NULL, Input_Type = NULL, State = NULL, County = NULL,
   FIPSs = NULL, fun = NULL, annual_change = FALSE, level = "county",
   facet = NULL, trans = "identity", fill_var_type = NULL,
@@ -79,7 +79,9 @@ require(usfertilizer)
 require(getFertilizer)
 data("us_fertilizer_county")
 
-us_plot <- map_us_fertilizer(Year = 2010, Nutrient = "N",
+us_plot <- map_us_fertilizer(
+data = us_fertilizer_county,
+Year = 2010, Nutrient = "N",
 level = "county",  Farm_Type = "farm",
 Input_Type = "Fertilizer",
 map_theme = theme_map_fertilizer(base_size = 12),

@@ -13,14 +13,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/getFertilizer)
+![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/getFertilizer)
 [![Travis-CI Build Status](https://travis-ci.org/wenlong-liu/getFertilizer.svg?branch=master)](https://travis-ci.org/wenlong-liu/getFertilizer)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/wenlong-liu/getFertilizer?branch=master&svg=true)](https://ci.appveyor.com/project/wenlong-liu/getFertilizer)
-
-<!---
- [![](https://cranlogs.r-pkg.org/badges/usfertilizer)](https://cran.r-project.org/package=usfertilizer)
-[![metacran downloads](http://cranlogs.r-pkg.org/badges/grand-total/usfertilizer?color=ff69b4)](https://cran.r-project.org/package=usfertilizer)
--->
+[![](https://cranlogs.r-pkg.org/badges/getFertilizer)](https://cran.r-project.org/package=getFertilizer)
+[![metacran downloads](http://cranlogs.r-pkg.org/badges/grand-total/getFertilizer?color=ff69b4)](https://cran.r-project.org/package=getFertilizer)
 
 ## Retrieve, Summarize and Visualize the Fertilizer Data in USA
 

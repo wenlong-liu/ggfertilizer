@@ -1,0 +1,44 @@
+---
+title: "generate plots"
+author: "Wenlong Liu"
+date: "7/10/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+```{r}
+require(getFertilizer)
+require(ggplot2)
+data = fertilizer
+```
+
+```{r map_fertilizer_examples}
+# 1
+nitrogen_fertilizer_2000 <- map_us_fertilizer(data = data, Year = 2000, 
+        Nutrient = "N", Input_Type = "fertilizer")
+ggsave("nitrogen-fertilizer-2000.svg")
+
+# 2
+nitrogen_manure_2007 <- map_us_fertilizer(data = data, Year = 2007, 
+        Nutrient = "N", Input_Type = "manure")
+ggsave("nitrogen-manure-2007.svg")
+
+# 3
+p_fertilizer_1997 <- map_us_fertilizer(data = data, Year = 1997, 
+        Nutrient = "P", Input_Type = "fertilizer")
+ggsave("p-fertilizer-1997.svg")
+
+# 4 
+state_p_manure_1997 <- map_us_fertilizer(data = data, Year = 1997, 
+        Nutrient = "P", Input_Type = "fertilizer", level = "state")
+ggsave("state_p_manure_1997.svg")
+
+# 5
+facet_n_farm_97_04 <- map_us_fertilizer(data = data, Year = 1997:2004,
+        Nutrient = "N", Farm_Type = "farm", facet = "Year")
+ggsave("facet-n-farm-97-04.svg")
+```
+

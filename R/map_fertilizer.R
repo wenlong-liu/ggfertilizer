@@ -44,14 +44,16 @@
 #' require(getFertilizer)
 #' data("us_fertilizer_county")
 #'
-#' us_plot <- map_us_fertilizer(Year = 2010, Nutrient = "N",
+#' us_plot <- map_us_fertilizer(
+#' data = us_fertilizer_county,
+#' Year = 2010, Nutrient = "N",
 #' level = "county",  Farm_Type = "farm",
 #' Input_Type = "Fertilizer",
 #' map_theme = theme_map_fertilizer(base_size = 12),
 #' viridis_palette = "inferno")
 #'
 #' us_plot
-map_us_fertilizer <- function(data = us_fertilizer_county,
+map_us_fertilizer <- function(data = "us_fertilizer_county",
                               # parameters for data preparation.
                               Year,
                               Nutrient,
@@ -90,6 +92,14 @@ map_us_fertilizer <- function(data = us_fertilizer_county,
     mutate(polyname = paste(region,subregion, sep = ",")) %>%
     left_join(county.fips, by = "polyname") %>%
     mutate(FIPS = str_pad(fips, 5, pad = "0"))
+
+  #
+  if (length(facet) > 1){
+  stop("Maximum one facet is supported.")
+  }
+  else if(!is.null(facet) & any(length(facet) == 0 | !(facet %in% colnames(data)) )){
+  stop("Facet should fall in the colnames of dataset.")
+  }
 
   # Genearte fertilizer data for each state.
   nutrient_summary <- data_preparation(data = data,
@@ -162,13 +172,23 @@ map_us_fertilizer <- function(data = us_fertilizer_county,
   }
 
   # add fixed coordinates ratio.
-  if(!is.null(coord_fix_ratio)
-     | !is.na(coord_fix_ratio
-     | !(coord_fix_ratio == "none"))){
-
-    us_plot = us_plot +
-      coord_fixed(coord_fix_ratio)
+  if(is.null(coord_fix_ratio)){
+    warning("The map might not perform well with free y:x ratio.")
   }
+  else if(!is.numeric(coord_fix_ratio)){
+    stop("Only numeric values are supported for fixed y:x ratio.")
+  }
+  else if(abs(coord_fix_ratio) > 100){
+    warning("The y:x ratio seems too large.")
+    us_plot = us_plot +
+      coord_fixed(ratio = coord_fix_ratio)
+  }
+  else
+  {
+      us_plot = us_plot +
+      coord_fixed(ratio = coord_fix_ratio)
+  }
+
 
   # add color pallet.
   # This section was highly inspired by xx in getTBinR.
@@ -206,12 +226,10 @@ map_us_fertilizer <- function(data = us_fertilizer_county,
 
   }
 
+  # check facet in the colnames of dataset.
 
-  # add facets.
-  if (length(facet) > 1){
-    stop("Maximum one facet is supported.")
-  }
-  else if(length(facet) == 1)
+
+  if(length(facet) == 1)
   {
     us_plot <- us_plot +
       facet_wrap(reformulate(facet,"." ))
@@ -250,7 +268,8 @@ map_us_fertilizer <- function(data = us_fertilizer_county,
 #' require(getFertilizer)
 #' data(us_fertilizer_county)
 #' # Generate a map.
-#' us_plot <- map_us_fertilizer(Year = 2010, Nutrient = "N",
+#' us_plot <- map_us_fertilizer(data = us_fertilizer_county,
+#' Year = 2010, Nutrient = "N",
 #' level = "county", facet="Year", Farm_Type = "farm")
 #'
 #' # Add user_defined map theme.

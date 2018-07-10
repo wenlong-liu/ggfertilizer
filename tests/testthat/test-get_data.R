@@ -18,7 +18,7 @@ test_that("Check to make sure the error info is right.",
                         fixed = TRUE)})
 
 for (year in year_error){
-test_that("If the years are out of limit, we can retrieve data from the dataset.",{
+test_that("If the years are out of limit, we can not retrieve data from the dataset.",{
   expect_error(get_data(data, years = year))
 })
 }

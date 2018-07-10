@@ -11,3 +11,9 @@ get_data(), get_FIPS(), data_overview().
 * Add the function to prepare data plotting.
 * Add website for getFertilizer using pkgdown.
 
+# getFertilizer 0.0.3
+
+* Addressed the warnings, errors, and notes from CRAN checks.
+* Fixed the errors for Travis and AppVeyor CIs.
+* Add unit test for map_us_fertilizer.
+
