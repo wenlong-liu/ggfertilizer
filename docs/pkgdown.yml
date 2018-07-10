@@ -2,5 +2,10 @@ pandoc: 2.2.1
 pkgdown: 1.1.0
 pkgdown_sha: ~
 articles:
+  Generate_plots: Generate_plots.html
   Get_started: Get_started.html
+  US_maps: US_maps.html
+urls:
+  reference: https://wenlong-liu.github.io/getFertilizer//reference
+  article: https://wenlong-liu.github.io/getFertilizer//articles
 

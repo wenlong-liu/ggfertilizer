@@ -1,0 +1,83 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{visualize fertilizer data in U.S. maps}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Plotting data in US maps.
+## Import libraries and dataset.
+```{r}
+require(getFertilizer)
+require(usfertilizer)
+require(ggplot2)
+data("us_fertilizer_county")
+data = us_fertilizer_county
+```
+
+## Maps at county level.
+
+```{r}
+# Initilize input parameters.
+Year = 2001
+Nutrient = "N"
+Farm_Type = "farm"
+Input_Type = "fertilizer"
+level  = "county"
+
+# draw the map
+us_plot <- map_us_fertilizer(data = data, Year = Year, Nutrient = Nutrient,
+                             Farm_Type = Farm_Type, Input_Type = Input_Type,
+                             viridis_palette = "inferno", level = level)
+us_plot +
+  ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
+                     " at ", level, " level",sep = ""))+
+  labs(caption = "Data source: United State Geography Service (USGS)")
+```
+
+
+## Maps at state level.
+
+```{r}
+level = "state"
+Year = 1997
+Input_Type = "manure"
+us_plot <- map_us_fertilizer(data = data, Year = Year, Nutrient = Nutrient,
+                             Farm_Type = Farm_Type, Input_Type = Input_Type,
+                             viridis_palette = "inferno", level = level)
+us_plot +
+  ggtitle(paste(Nutrient,  " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
+                     " at ", level, " level",sep = ""))+
+  labs(caption = "Data source: United State Geography Service (USGS)")
+```
+
+
+## Maps with facets.
+
+```{r}
+Year = c(1950, 1980, 2010)
+facet = "Year"
+nutrient = "N"
+Input_Type = "fertilizer"
+level = "county"
+us_plot <- map_us_fertilizer(data = data, Year = Year, Nutrient = Nutrient,
+                             Farm_Type = Farm_Type, Input_Type = Input_Type,
+                             viridis_palette = "inferno", level = level,
+                             facet = facet)
+us_plot +
+  ggtitle(paste(Nutrient," input "," from ", Input_Type,  " to ", Farm_Type, 
+                     " at ", level, " level",sep = ""))+
+  labs(caption = "Data source: United State Geography Service (USGS)")
+```
+

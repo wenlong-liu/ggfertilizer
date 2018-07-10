@@ -1,5 +1,4 @@
 ---
-title: "getFertilizer"
 output: rmarkdown::github_document
 ---
 
@@ -12,6 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "README-"
 )
 ```
+# getFertilizer 
 
 ![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/getFertilizer)
 [![Travis-CI Build Status](https://travis-ci.org/wenlong-liu/getFertilizer.svg?branch=master)](https://travis-ci.org/wenlong-liu/getFertilizer)
@@ -20,7 +20,6 @@ knitr::opts_chunk$set(
 [![metacran downloads](http://cranlogs.r-pkg.org/badges/grand-total/getFertilizer?color=ff69b4)](https://cran.r-project.org/package=getFertilizer)
 
 ## Retrieve, Summarize and Visualize the Fertilizer Data in USA
-
 Provides a user-friendly API to further dig in County-Level Fertilizer data in USA, provided by USGS. 
              
 ## Installation

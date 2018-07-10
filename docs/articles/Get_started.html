@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Get started with getFertilizer • getFertilizer</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Get started with getFertilizer">
@@ -19,7 +19,7 @@
 </head>
 <body>
     <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -36,35 +36,59 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
+  <a href="../index.html">Home</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/Get_started.html">Getting Started</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Case studies
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/Get_started.html">Get started with getFertilizer</a>
+      <a href="../articles/US_maps.html">Visualize fertilizer data in U.S maps.</a>
     </li>
+    <li class="dropdown-header">Plotting map</li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    More materials
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="https://wenlong-liu.github.io/usfertilizer/reference/us_fertilizer_county.html">Dataset description</a>
+    </li>
+    <li>
+      <a href="https://wenlong-liu.github.io/usfertilizer/articles/Data_sources_and_cleaning.html">Data sources</a>
+    </li>
+  </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/wenlong-liu/getFertilizer">
+  <a href="../news/index.html">News</a>
+</li>
+<li>
+  <a href="https://github.com/wenlong-liu/usfertilizer">
     <span class="fa fa-github fa-lg"></span>
      
+    Github
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/tianya0423">
+    <span class="fa fa-twitter fa-lg"></span>
+     
+    Twitter
   </a>
 </li>
       </ul>
@@ -91,9 +115,6 @@
 
     
     
-<div id="getfertilizer" class="section level1">
-<h1 class="hasAnchor">
-<a href="#getfertilizer" class="anchor"></a>getFertilizer</h1>
 <div id="retrieve-summarize-and-visualize-the-fertilizer-data-in-usa" class="section level2">
 <h2 class="hasAnchor">
 <a href="#retrieve-summarize-and-visualize-the-fertilizer-data-in-usa" class="anchor"></a>Retrieve, Summarize and Visualize the Fertilizer Data in USA</h2>
@@ -102,13 +123,28 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>getFertilizer is available via CRAN,</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"getFertilizer"</span>)</a></code></pre></div>
+<p>This package can be installed via github using devtools.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.package("devtools")   #In case you have not installed it.</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"wenlong-liu/getFertilizer"</span>)</a></code></pre></div>
 </div>
 <div id="quick-start" class="section level2">
 <h2 class="hasAnchor">
-<a href="#quick-start" class="anchor"></a>Quick start</h2>
+<a href="#quick-start" class="anchor"></a>Quick Start</h2>
 </div>
+<div id="comments-and-questions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#comments-and-questions" class="anchor"></a>Comments and Questions</h2>
+<p>If you have any problems or questions, feel free to open an issue <a href="https://github.com/wenlong-liu/getFertilizer/issues">here</a>.</p>
+</div>
+<div id="lisence" class="section level2">
+<h2 class="hasAnchor">
+<a href="#lisence" class="anchor"></a>Lisence</h2>
+<p><a href="https://github.com/wenlong-liu/getFertilizer/blob/master/LICENSE">GPL</a></p>
+</div>
+<div id="code-of-conduct" class="section level2">
+<h2 class="hasAnchor">
+<a href="#code-of-conduct" class="anchor"></a>Code of conduct</h2>
+<p>Please note that this project is released with a <a href="https://github.com/wenlong-liu/getFertilizer/blob/master/CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
   </div>
 
@@ -117,13 +153,12 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#getfertilizer">getFertilizer</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#retrieve-summarize-and-visualize-the-fertilizer-data-in-usa">Retrieve, Summarize and Visualize the Fertilizer Data in USA</a></li>
       <li><a href="#installation">Installation</a></li>
-      <li><a href="#quick-start">Quick start</a></li>
-      </ul>
-</li>
+      <li><a href="#quick-start">Quick Start</a></li>
+      <li><a href="#comments-and-questions">Comments and Questions</a></li>
+      <li><a href="#lisence">Lisence</a></li>
+      <li><a href="#code-of-conduct">Code of conduct</a></li>
       </ul>
 </div>
       </div>

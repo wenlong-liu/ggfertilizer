@@ -1,7 +1,7 @@
-getFertilizer
-================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# getFertilizer
 
 ![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/getFertilizer)
 [![Travis-CI Build

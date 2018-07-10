@@ -1,0 +1,39 @@
+title: getFertilizer
+url: https://wenlong-liu.github.io/getFertilizer/
+
+template:
+  params:
+    bootswatch: journal
+
+navbar:
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Getting Started"
+      href: articles/Get_started.html
+    - text: "Case studies"
+      menu:
+      - text: "Visualize fertilizer data in U.S maps."
+        href: articles/US_maps.html
+      - text: "Plotting map"
+        href:
+      href: articles/Data_sources_and_cleaning.html
+    - text: "Functions"
+      href: reference/index.html
+    - text: "More materials"
+      menu:
+      - text: "Dataset description"
+        href: https://wenlong-liu.github.io/usfertilizer/reference/us_fertilizer_county.html
+      - text: "Data sources"
+        href: https://wenlong-liu.github.io/usfertilizer/articles/Data_sources_and_cleaning.html
+
+  right:
+    - text: News
+      href: news/index.html
+    - icon: fa-github fa-lg
+      text: "Github"
+      href: https://github.com/wenlong-liu/usfertilizer
+    - icon: fa-twitter fa-lg
+      text: "Twitter"
+      href: https://twitter.com/tianya0423
