@@ -33,7 +33,7 @@ navbar:
       href: news/index.html
     - icon: fa-github fa-lg
       text: "Github"
-      href: https://github.com/wenlong-liu/usfertilizer
+      href: https://github.com/wenlong-liu/getFertilizer
     - icon: fa-twitter fa-lg
       text: "Twitter"
       href: https://twitter.com/tianya0423
