@@ -6,7 +6,7 @@ output: rmarkdown::html_vignette
 
 vignette: >
   %\VignetteIndexEntry{Visualize fertilizer data in U.S. maps}
-  %\VignetteEngine{knitr::ßrmarkdown}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
