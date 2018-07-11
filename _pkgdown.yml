@@ -16,6 +16,8 @@ navbar:
       menu:
       - text: "Visualize fertilizer data in U.S maps."
         href: articles/US_maps.html
+      - text: "Visualize fertilizer for states and counties"
+        href: articles/State_fertilizer_maps.html
       - text: "Plotting map"
         href:
       href: articles/Data_sources_and_cleaning.html

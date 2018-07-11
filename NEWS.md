@@ -19,3 +19,4 @@ get_data(), get_FIPS(), data_overview().
 * Initialize the 4 vignettes for R packages (also tutorials).
 * Reformat the structure of website.
 * Add quick start in Readme.rmd
+* Add a north symbol and a scale bar.

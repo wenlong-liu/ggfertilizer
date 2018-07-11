@@ -12,7 +12,9 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.width = 6,
+  fig.height = 4
 )
 ```
 
@@ -22,6 +24,7 @@ knitr::opts_chunk$set(
 require(getFertilizer)
 require(usfertilizer)
 require(ggplot2)
+require(ggsn)
 data("us_fertilizer_county")
 ```
 
@@ -39,9 +42,34 @@ carolinas = c("NC", "SC")
 state_plot <- map_us_fertilizer(data = us_fertilizer_county, Year = Year, Nutrient = Nutrient,
                              Farm_Type = Farm_Type, Input_Type = Input_Type, State = carolinas,
                              viridis_palette = "inferno", level = level) +
+
   ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
                      " at ", level, " level",sep = ""))
 state_plot
+```
+
+We can also add a north label and a scale bar for the map from R package [ggsn](https://github.com/oswaldosantos/ggsn).
+
+```{r}
+Year = 1997
+Nutrient = "N"
+Farm_Type = "farm"
+Input_Type = "manure"
+level  = "county" 
+carolinas = c("NC", "SC")
+
+# draw the maps
+state_plot <- map_us_fertilizer(data = us_fertilizer_county, Year = Year, Nutrient = Nutrient,
+                             Farm_Type = Farm_Type, Input_Type = Input_Type, State = carolinas,
+                             viridis_palette = "inferno", level = level, north = TRUE) +
+
+  ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
+                     " at ", level, " level",sep = ""))
+
+state_plot + 
+  north(data = state_plot$states_shape, location = "topleft")+
+  scalebar(data = state_plot$states_shape,  
+           dist = 80, dd2km = TRUE, model = 'WGS84', st.size = 3)
 ```
 
 
@@ -55,11 +83,11 @@ Input_Type = "fertilizer"
 level  = "state" 
 facet  = "Year"
 midwest_states = c("OH", "MI", "IN", "WI", "IL", "MN", "IA", "MI", "ND", "SD", "NE", "KS")
-
+us_fertilizer_county$Year = as.numeric(us_fertilizer_county$Year)
 # draw the maps
 state_plot <- map_us_fertilizer(data = us_fertilizer_county, Year = Year, Nutrient = Nutrient,
                              Farm_Type = Farm_Type, Input_Type = Input_Type, State = midwest_states,
-                             viridis_palette = "inferno", level = level, facet = facet) +
+                             viridis_palette = "inferno", level = level ) +
   ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type,
                      " at ", level, " level",sep = ""))
 state_plot
@@ -81,12 +109,12 @@ county = c( "duplin", "beaufort",  "Lenoir", "pender", "Bladen", "Brunswick",
 # draw the maps
 state_plot <- map_us_fertilizer(data = us_fertilizer_county, Year = Year, Nutrient = Nutrient,
                              Farm_Type = Farm_Type, Input_Type = Input_Type, State = carolinas,
-                             County = county,
-                             viridis_palette = "inferno", level = level)+
+                             County = county,  viridis_palette = "inferno", level = level)+
   # add title
     ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
                      " at ", level, " level\nin southeast North Carolina",sep = ""))
  
-state_plot
+state_plot 
 ```
+
 

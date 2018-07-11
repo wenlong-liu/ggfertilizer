@@ -27,6 +27,8 @@
 #' @param orientation orientation for map projection.
 #' @param xlim x axis limits for map project.
 #' @param ylim y axis limits for map project.
+#' @param north logic.  If TRUE, the ggplot object will include a states_shape df to
+#'     draw north symbols and scale bars.
 #' @param na.rm How to deal with NA values. Default: TRUE.
 #' @param coord_fix_ratio the ratio for fixed coordinate system, default: 1.3.
 #' @param map_theme the map theme for dataset. Default: theme_map_fertilizer()
@@ -81,6 +83,8 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
                               xlim = NULL,
                               ylim = NULL,
 
+                              # others
+                              north = FALSE,
                               na.rm = TRUE,
                               coord_fix_ratio = 1.3,
                               map_theme = theme_map_fertilizer()){
@@ -258,6 +262,12 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
   if (!is.null(map_theme)){
     us_plot <- us_plot +
       map_theme
+  }
+
+  # check if want to add states_shape or not.
+  if (north){
+  # add stateshapes for further plotting.
+  us_plot$states_shape = states_shape
   }
 
   return(us_plot)
