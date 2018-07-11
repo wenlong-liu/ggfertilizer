@@ -1,18 +1,21 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Visualize fertilizer data in U.S. maps"
+author: "Wenlong Liu"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+
 vignette: >
-  %\VignetteIndexEntry{visualize fertilizer data in U.S. maps}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Visualize fertilizer data in U.S. maps}
+  %\VignetteEngine{knitr::ßrmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.width = 6,
+  fig.height = 4
 )
 ```
 
@@ -39,11 +42,10 @@ level  = "county"
 # draw the map
 us_plot <- map_us_fertilizer(data = data, Year = Year, Nutrient = Nutrient,
                              Farm_Type = Farm_Type, Input_Type = Input_Type,
-                             viridis_palette = "inferno", level = level)
-us_plot +
+                             viridis_palette = "inferno", level = level) +
   ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
-                     " at ", level, " level",sep = ""))+
-  labs(caption = "Data source: United State Geography Service (USGS)")
+                     " at ", level, " level",sep = ""))
+us_plot
 ```
 
 
@@ -55,18 +57,27 @@ Year = 1997
 Input_Type = "manure"
 us_plot <- map_us_fertilizer(data = data, Year = Year, Nutrient = Nutrient,
                              Farm_Type = Farm_Type, Input_Type = Input_Type,
-                             viridis_palette = "inferno", level = level)
+                             viridis_palette = "inferno", level = level) +
+  ggtitle(paste(Nutrient,  " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
+                     " at ", level, " level",sep = ""))
+us_plot
+```
+
+## Chanage projection system
+
+We can also change the projection system of the map to "albers" projection.
+
+```{r projection, message=FALSE}
 us_plot +
   ggtitle(paste(Nutrient,  " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
                      " at ", level, " level",sep = ""))+
-  labs(caption = "Data source: United State Geography Service (USGS)")
+  coord_map("albers",lat0=39, lat1=45)
 ```
-
 
 ## Maps with facets.
 
-```{r}
-Year = c(1950, 1980, 2010)
+```{r facets, fig.width=7, fig.height=4}
+Year = c(1945, 1975, 2005)
 facet = "Year"
 nutrient = "N"
 Input_Type = "fertilizer"
@@ -74,10 +85,10 @@ level = "county"
 us_plot <- map_us_fertilizer(data = data, Year = Year, Nutrient = Nutrient,
                              Farm_Type = Farm_Type, Input_Type = Input_Type,
                              viridis_palette = "inferno", level = level,
-                             facet = facet)
-us_plot +
+                             facet = facet) +
   ggtitle(paste(Nutrient," input "," from ", Input_Type,  " to ", Farm_Type, 
-                     " at ", level, " level",sep = ""))+
-  labs(caption = "Data source: United State Geography Service (USGS)")
+                     " at ", level, " level",sep = ""))
+
+us_plot
 ```
 

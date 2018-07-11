@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Retrieve, Summarize and Visualize the Fertilizer Data in USA • getFertilizer</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Retrieve, Summarize and Visualize the Fertilizer Data in USA">
@@ -56,9 +56,6 @@
     <li class="dropdown-header">Plotting map</li>
   </ul>
 </li>
-<li>
-  <a href="reference/index.html">Functions</a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     More materials
@@ -67,6 +64,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="reference/index.html">Functions</a>
+    </li>
+    <li>
       <a href="https://wenlong-liu.github.io/usfertilizer/reference/us_fertilizer_county.html">Dataset description</a>
     </li>
     <li>
@@ -80,7 +80,7 @@
   <a href="news/index.html">News</a>
 </li>
 <li>
-  <a href="https://github.com/wenlong-liu/usfertilizer">
+  <a href="https://github.com/wenlong-liu/getFertilizer">
     <span class="fa fa-github fa-lg"></span>
      
     Github
@@ -128,6 +128,107 @@
 <div id="quick-start" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quick-start" class="anchor"></a>Quick Start</h2>
+<div id="import-data-and-libraries" class="section level3">
+<h3 class="hasAnchor">
+<a href="#import-data-and-libraries" class="anchor"></a>Import data and libraries</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">require</span>(usfertilizer)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">require</span>(getFertilizer)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">require</span>(dplyr)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; Warning: package 'dplyr' was built under R version 3.5.1</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">require</span>(ggplot2)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="kw">data</span>(<span class="st">"us_fertilizer_county"</span>)</a></code></pre></div>
+</div>
+<div id="retrieve-fertilizer-data" class="section level3">
+<h3 class="hasAnchor">
+<a href="#retrieve-fertilizer-data" class="anchor"></a>Retrieve fertilizer data</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">Year &lt;-<span class="st">  </span><span class="dv">2008</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">Nutrient &lt;-<span class="st"> "N"</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">Input_Type &lt;-<span class="st"> "fertilizer"</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co"># retrieve data.</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">plot_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">data =</span> us_fertilizer_county, <span class="dt">years =</span> Year, <span class="dt">nutrient =</span> Nutrient, </a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">                      <span class="dt">input_type =</span> Input_Type,  <span class="dt">combine_state_county =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="kw">head</span>(plot_data)</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; # A tibble: 6 x 12</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;   FIPS  State County       ALAND  AWATER INTPTLAT INTPTLONG Quantity Year </span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 1 01001 AL    Autauga,…   1.54e9  2.58e7     32.5     -86.6   783984 2008 </span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; 2 01003 AL    Baldwin,…   4.12e9  1.13e9     30.7     -87.7  4948455 2008 </span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; 3 01005 AL    Barbour,…   2.29e9  5.09e7     31.9     -85.4  1171588 2008 </span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; 4 01007 AL    Bibb, AL    1.61e9  9.29e6     33.0     -87.1   141669 2008 </span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; 5 01009 AL    Blount, …   1.67e9  1.52e7     34.0     -86.6  1206109 2008 </span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; 6 01011 AL    Bullock,…   1.61e9  6.06e6     32.1     -85.7   629577 2008 </span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; # ... with 3 more variables: Nutrient &lt;chr&gt;, Farm.Type &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; #   Input.Type &lt;chr&gt;</span></a></code></pre></div>
+</div>
+<div id="summarize-and-plot-data-" class="section level3">
+<h3 class="hasAnchor">
+<a href="#summarize-and-plot-data-" class="anchor"></a>Summarize and plot data.</h3>
+<div id="example-1-find-out-the-top-10-counties-with-most-nitrogen-appliation-in-2008-" class="section level4">
+<h4 class="hasAnchor">
+<a href="#example-1-find-out-the-top-10-counties-with-most-nitrogen-appliation-in-2008-" class="anchor"></a>Example 1: Find out the top 10 counties with most nitrogen appliation in 2008.</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># plot the top 10 nitrogen application in year 2008.</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">plot &lt;-<span class="st"> </span>plot_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="dv">10</span>, Quantity) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x=</span><span class="kw">reorder</span>(County, Quantity), Quantity, <span class="dt">fill =</span> Quantity))<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_gradient">scale_fill_gradient</a></span>(<span class="dt">low =</span> <span class="st">"blue"</span>, <span class="dt">high =</span> <span class="st">"darkblue"</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_bar">geom_col</a></span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">ggtitle</a></span>(<span class="kw">paste</span>(<span class="st">"Top 10 counties with most N fertilizer application in the year of"</span>, Year)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_continuous">scale_y_continuous</a></span>(<span class="dt">name =</span> <span class="st">"Nitrogen from commecial fertilization (kg)"</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_discrete">scale_x_discrete</a></span>(<span class="dt">name =</span> <span class="st">"Counties"</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/coord_flip">coord_flip</a></span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>()</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">plot</a></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+</div>
+</div>
+<div id="examples-2-visualize-the-fertilizer-data-in-us-maps-" class="section level3">
+<h3 class="hasAnchor">
+<a href="#examples-2-visualize-the-fertilizer-data-in-us-maps-" class="anchor"></a>Examples 2: Visualize the fertilizer data in US maps.</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">Year =<span class="st"> </span><span class="dv">2001</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">Nutrient =<span class="st"> "N"</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">Farm_Type =<span class="st"> "farm"</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">Input_Type =<span class="st"> "fertilizer"</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">level  =<span class="st"> "county"</span> </a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co"># draw the map</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">us_plot &lt;-<span class="st"> </span><span class="kw"><a href="reference/map_us_fertilizer.html">map_us_fertilizer</a></span>(<span class="dt">data =</span> us_fertilizer_county, <span class="dt">Year =</span> Year, <span class="dt">Nutrient =</span> Nutrient,</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">                             <span class="dt">Farm_Type =</span> Farm_Type, <span class="dt">Input_Type =</span> Input_Type, </a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">                             <span class="dt">viridis_palette =</span> <span class="st">"inferno"</span>, <span class="dt">level =</span> level) </a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">us_plot</a></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<p>As the maps are actually ggplot2 objects, all the common API for ggplot2 can be used here. We can also add a title for the map to make it more informative.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">us_plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">ggtitle</a></span>(<span class="kw">paste</span>(Nutrient,  <span class="st">" from "</span>, Input_Type, <span class="st">" input to "</span>, Farm_Type, <span class="st">" in the year of "</span>,Year,</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">                     <span class="st">" at "</span>, level, <span class="st">" level"</span>,<span class="dt">sep =</span> <span class="st">""</span>))</a></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<p>For more details about mapping fertilizer data, please see this <a href="https://wenlong-liu.github.io/getFertilizer/articles/US_maps.html">vignettes of plotting us maps of fertilizer.</a></p>
+</div>
+<div id="example-3-visualize-the-fertilizer-data-for-certain-states-or-counties-" class="section level3">
+<h3 class="hasAnchor">
+<a href="#example-3-visualize-the-fertilizer-data-for-certain-states-or-counties-" class="anchor"></a>Example 3: Visualize the fertilizer data for certain states or counties.</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">Year =<span class="st"> </span><span class="dv">2011</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">Nutrient =<span class="st"> "P"</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">Farm_Type =<span class="st"> "nonfarm"</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">Input_Type =<span class="st"> "fertilizer"</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">level  =<span class="st"> "county"</span> </a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">State =<span class="st"> </span><span class="kw">c</span>(<span class="st">"NC"</span>, <span class="st">"SC"</span>)</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co"># draw the map</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">state_plot &lt;-<span class="st"> </span><span class="kw"><a href="reference/map_us_fertilizer.html">map_us_fertilizer</a></span>(<span class="dt">data =</span> us_fertilizer_county, <span class="dt">Year =</span> Year, <span class="dt">Nutrient =</span> Nutrient,</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">                             <span class="dt">Farm_Type =</span> Farm_Type, <span class="dt">Input_Type =</span> Input_Type, <span class="dt">State =</span> State,</a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">                             <span class="dt">viridis_palette =</span> <span class="st">"inferno"</span>, <span class="dt">level =</span> level) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="st">              </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">ggtitle</a></span>(<span class="kw">paste</span>(Nutrient,  <span class="st">" from "</span>, Input_Type, <span class="st">" input to "</span>, Farm_Type, <span class="st">" in the year of "</span>,Year,</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13">                       <span class="st">" at "</span>, level, <span class="st">" level for Carolinas"</span>,<span class="dt">sep =</span> <span class="st">""</span>))</a>
+<a class="sourceLine" id="cb7-14" data-line-number="14">state_plot</a></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<p>For more details about mapping fertilizer data, please see this <a href="https://wenlong-liu.github.io/getFertilizer/articles/State_fertilizer_maps.html">vignettes of plotting state maps</a></p>
+</div>
+<div id="generate-summaries-plots-" class="section level3">
+<h3 class="hasAnchor">
+<a href="#generate-summaries-plots-" class="anchor"></a>Generate summaries plots.</h3>
+<p>(Under development on July 10, 2018)</p>
+</div>
 </div>
 <div id="comments-and-questions" class="section level2">
 <h2 class="hasAnchor">

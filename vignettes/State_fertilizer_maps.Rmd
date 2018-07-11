@@ -1,0 +1,92 @@
+---
+title: "Visualize fertilizer data in states and counties "
+author: "Wenlong Liu"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Visualize fertilizer data in in states and counties}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## Import libraries and data
+```{r}
+require(getFertilizer)
+require(usfertilizer)
+require(ggplot2)
+data("us_fertilizer_county")
+```
+
+## Plot P input from manure maps for carolinas
+
+```{r}
+Year = 1997
+Nutrient = "N"
+Farm_Type = "farm"
+Input_Type = "manure"
+level  = "county" 
+carolinas = c("NC", "SC")
+
+# draw the maps
+state_plot <- map_us_fertilizer(data = us_fertilizer_county, Year = Year, Nutrient = Nutrient,
+                             Farm_Type = Farm_Type, Input_Type = Input_Type, State = carolinas,
+                             viridis_palette = "inferno", level = level) +
+  ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
+                     " at ", level, " level",sep = ""))
+state_plot
+```
+
+
+## Plot fertilizer maps for midwest states
+
+```{r}
+Year = c(1950, 1970, 1990, 2010)
+Nutrient = "N"
+Farm_Type = "farm"
+Input_Type = "fertilizer"
+level  = "state" 
+facet  = "Year"
+midwest_states = c("OH", "MI", "IN", "WI", "IL", "MN", "IA", "MI", "ND", "SD", "NE", "KS")
+
+# draw the maps
+state_plot <- map_us_fertilizer(data = us_fertilizer_county, Year = Year, Nutrient = Nutrient,
+                             Farm_Type = Farm_Type, Input_Type = Input_Type, State = midwest_states,
+                             viridis_palette = "inferno", level = level, facet = facet) +
+  ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type,
+                     " at ", level, " level",sep = ""))
+state_plot
+```
+
+## Plot fertilizer use maps for certain counties.
+
+```{r}
+Year = 1997
+Nutrient = "P"
+Farm_Type = "farm"
+Input_Type = "manure"
+level  = "county" 
+carolinas = "NC"
+county = c( "duplin", "beaufort",  "Lenoir", "pender", "Bladen", "Brunswick",
+            "Carteret", "Columbus", "jones", "New Hanover", "Onslow", "Pamlico", "Pender",
+           "Robeson", "Sampson", "Wayne", "Wilson", "Craven")
+
+# draw the maps
+state_plot <- map_us_fertilizer(data = us_fertilizer_county, Year = Year, Nutrient = Nutrient,
+                             Farm_Type = Farm_Type, Input_Type = Input_Type, State = carolinas,
+                             County = county,
+                             viridis_palette = "inferno", level = level)+
+  # add title
+    ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
+                     " at ", level, " level\nin southeast North Carolina",sep = ""))
+ 
+state_plot
+```
+

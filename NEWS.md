@@ -16,6 +16,6 @@ get_data(), get_FIPS(), data_overview().
 * Addressed the warnings, errors, and notes from CRAN checks.
 * Fixed the errors for Travis and AppVeyor CIs.
 * Add unit test for map_us_fertilizer.
-* Initialize the vignettes for R packages (also tutorials).
+* Initialize the 4 vignettes for R packages (also tutorials).
 * Reformat the structure of website.
 * Add quick start in Readme.rmd

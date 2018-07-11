@@ -4,6 +4,7 @@ pkgdown_sha: ~
 articles:
   Generate_plots: Generate_plots.html
   Get_started: Get_started.html
+  State_fertilizer_maps: State_fertilizer_maps.html
   US_maps: US_maps.html
 urls:
   reference: https://wenlong-liu.github.io/getFertilizer//reference

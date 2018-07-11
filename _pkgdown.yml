@@ -3,7 +3,7 @@ url: https://wenlong-liu.github.io/getFertilizer/
 
 template:
   params:
-    bootswatch: journal
+    bootswatch: cosmo
 
 navbar:
   type: inverse
@@ -19,10 +19,11 @@ navbar:
       - text: "Plotting map"
         href:
       href: articles/Data_sources_and_cleaning.html
-    - text: "Functions"
-      href: reference/index.html
+
     - text: "More materials"
       menu:
+      - text: "Functions"
+        href: reference/index.html
       - text: "Dataset description"
         href: https://wenlong-liu.github.io/usfertilizer/reference/us_fertilizer_county.html
       - text: "Data sources"

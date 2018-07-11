@@ -85,15 +85,21 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
                               coord_fix_ratio = 1.3,
                               map_theme = theme_map_fertilizer()){
 
-  # Generate potential plots.
+  # Generate shapes
   states_shape <- map_data("state")
+  names(state.name) = state.abb
 
   counties_shape <- map_data("county") %>%
     mutate(polyname = paste(region,subregion, sep = ",")) %>%
     left_join(county.fips, by = "polyname") %>%
     mutate(FIPS = str_pad(fips, 5, pad = "0"))
 
-  #
+  if (!is.null(State)){
+    states_shape <- states_shape %>%
+      filter(region %in% tolower(state.name[State]))
+  }
+
+  # check facet.
   if (length(facet) > 1){
   stop("Maximum one facet is supported.")
   }
@@ -137,7 +143,7 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
     stop("The map level for us fertilizer should be either county or state.")
   }
   else if(level == "state"){
-    names(state.name) = state.abb
+
     # add nutrient data with state level region.
     add_state <- function(data, state_shape, state.name){
       data = data %>%
@@ -153,10 +159,12 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
                                    state.name)
                         )
 
+
     us_plot <- ggplot(nutrient_summary)+
       geom_polygon(aes(x = long, y = lat,
                        fill = Quantity, group = group),
-                   color = "grey", size = 0.1)
+                   color = "grey", size = 0.1)+
+      labs(caption = "Data source: United State Geography Service (USGS)")
 
   }
   else if(level == "county"){
@@ -168,7 +176,8 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
                       fill = Quantity, group = group))+
       geom_polygon(aes(x = long, y = lat, group = group),
                    fill = NA, data = states_shape, color = "lightgrey",
-                   size = 0.1)
+                   size = 0.1)+
+      labs(caption = "Data source: United State Geography Service (USGS)")
   }
 
   # add fixed coordinates ratio.

@@ -82,7 +82,7 @@ plot <- plot_data %>%
 plot
 ```
 
-![](README-unnamed-chunk-4-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
 ### Examples 2: Visualize the fertilizer data in US maps.
 
@@ -91,61 +91,61 @@ Year = 2001
 Nutrient = "N"
 Farm_Type = "farm"
 Input_Type = "fertilizer"
-level  = "county"
+level  = "county" 
 
 # draw the map
 us_plot <- map_us_fertilizer(data = us_fertilizer_county, Year = Year, Nutrient = Nutrient,
-                             Farm_Type = Farm_Type, Input_Type = Input_Type,
-                             viridis_palette = "inferno", level = level)
-us_plot <- us_plot +
-  ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
-                     " at ", level, " level",sep = ""))+
-  labs(caption = "Data source: United State Geography Service (USGS)")
+                             Farm_Type = Farm_Type, Input_Type = Input_Type, 
+                             viridis_palette = "inferno", level = level) 
 us_plot
 ```
 
-![](README-unnamed-chunk-5-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
-As the map is a ggplot2 object, users can play with it as normal ggplot2
-graphs. Such we can change the projection system of the map to “albers”
-projection.
+As the maps are actually ggplot2 objects, all the common API for ggplot2
+can be used here. We can also add a title for the map to make it more
+informative.
 
 ``` r
 us_plot +
-  coord_map("albers",lat0=39, lat1=45)
+  ggtitle(paste(Nutrient,  " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
+                     " at ", level, " level",sep = ""))
 ```
 
-![](README-projection-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
-The map can also be drawn at state level. The built-in function will
-automatically sum up all the data with the corresponding states.
+For more details about mapping fertilizer data, please see this
+[vignettes of plotting us maps of
+fertilizer.](https://wenlong-liu.github.io/getFertilizer/articles/US_maps.html)
+
+### Example 3: Visualize the fertilizer data for certain states or counties.
 
 ``` r
-Year = 2007
+Year = 2011
 Nutrient = "P"
 Farm_Type = "nonfarm"
 Input_Type = "fertilizer"
-level  = "state"
+level  = "county" 
+State = c("NC", "SC")
 
 # draw the map
-us_plot <- map_us_fertilizer(data = us_fertilizer_county, Year = Year, Nutrient = Nutrient,
-                             Farm_Type = Farm_Type, Input_Type = Input_Type,
-                             viridis_palette = "inferno", level = level)
-us_plot <- us_plot +
-  ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
-                     " at ", level, " level",sep = ""))+
-  labs(caption = "Data source: United State Geography Service (USGS)")
-us_plot
+state_plot <- map_us_fertilizer(data = us_fertilizer_county, Year = Year, Nutrient = Nutrient,
+                             Farm_Type = Farm_Type, Input_Type = Input_Type, State = State,
+                             viridis_palette = "inferno", level = level) +
+              ggtitle(paste(Nutrient,  " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
+                       " at ", level, " level for Carolinas",sep = ""))
+state_plot
 ```
 
-![](README-unnamed-chunk-6-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 For more details about mapping fertilizer data, please see this
-[vignettes](https://wenlong-liu.github.io/getFertilizer/articles/US_maps.html)
+[vignettes of plotting state
+maps](https://wenlong-liu.github.io/getFertilizer/articles/State_fertilizer_maps.html)
 
 ### Generate summaries plots.
 
-(under development on July 10, 2018)
+(Under development on July 10, 2018)
 
 ## Comments and Questions
 
