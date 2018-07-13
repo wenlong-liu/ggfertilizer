@@ -29,6 +29,7 @@ Imports: dplyr,
     stats
 Suggests: knitr,
     rmarkdown,
-    testthat
+    testthat,
+    ggsn
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
