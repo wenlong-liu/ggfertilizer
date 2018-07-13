@@ -8,7 +8,7 @@ map_us_fertilizer(data = "us_fertilizer_county", Year, Nutrient,
   Farm_Type = NULL, Input_Type = NULL, State = NULL, County = NULL,
   FIPSs = NULL, fun = NULL, annual_change = FALSE, level = "county",
   facet = NULL, trans = "identity", fill_var_type = NULL,
-  viridis_palette = "viridis", viridis_direction = -1, viridis_end = 0.9,
+  viridis_palette = "inferno", viridis_direction = -1, viridis_end = 0.9,
   projection = NULL, parameters = NULL, orientation = NULL, xlim = NULL,
   ylim = NULL, add_north = FALSE, na.rm = TRUE, coord_fix_ratio = 1.3,
   map_theme = theme_map_fertilizer())
@@ -43,7 +43,7 @@ N, P or both (NULL).}
 
 \item{fill_var_type}{the type of data to visualize, default: Null.}
 
-\item{viridis_palette}{the palette type for viridis,
+\item{viridis_palette}{the palette type for viridis, default: inferno.
 options:  “Viridis”,“magma”, “plasma”, "cividis", and “inferno.”}
 
 \item{viridis_direction}{Sets the order of colors in the scale.

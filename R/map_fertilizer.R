@@ -16,7 +16,7 @@
 #' @param facet the facet to draw subplots.
 #' @param trans the transformation parameter for scale_fill_viridis.
 #' @param fill_var_type the type of data to visualize, default: Null.
-#' @param viridis_palette the palette type for viridis,
+#' @param viridis_palette the palette type for viridis, default: inferno.
 #'     options:  “Viridis”,“magma”, “plasma”, "cividis", and “inferno.”
 #' @param viridis_direction 	Sets the order of colors in the scale.
 #'     If 1, the default, colors are ordered from darkest to lightest.
@@ -72,7 +72,7 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
                               # the colors for map.
                               trans = "identity",
                               fill_var_type = NULL,
-                              viridis_palette = "viridis",
+                              viridis_palette = "inferno",
                               viridis_direction = -1,
                               viridis_end = 0.9,
 
@@ -168,7 +168,8 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
       geom_polygon(aes(x = long, y = lat,
                        fill = Quantity, group = group),
                    color = "grey", size = 0.1)+
-      labs(caption = "Data source: United State Geography Service (USGS)")
+      labs(caption = "Data source: United State Geography Service (USGS)",
+           fill = "Quantity (kg)")
 
   }
   else if(level == "county"){
@@ -181,7 +182,8 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
       geom_polygon(aes(x = long, y = lat, group = group),
                    fill = NA, data = states_shape, color = "lightgrey",
                    size = 0.1)+
-      labs(caption = "Data source: United State Geography Service (USGS)")
+      labs(caption = "Data source: United State Geography Service (USGS)",
+           fill = "Quantity (kg)")
   }
 
   # add fixed coordinates ratio.
