@@ -1,10 +1,10 @@
----
-title: "Get started with getFertilizer"
+ggfertilizer---
+title: "Get started with ggfertilizer"
 author: "Wenlong Liu"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Get started with getFertilizer}
+  %\VignetteIndexEntry{Get started with ggfertilizer}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -25,7 +25,7 @@ This package can be installed via CRAN.
 
 ```{r, eval=FALSE}
 # Not available yet.
-install.packages("getFertilizer")
+install.packages("ggfertilizer")
 ```
 
 
@@ -33,8 +33,7 @@ install.packages("getFertilizer")
 ### Import data and libraries
 
 ```{r data, message=FALSE}
-require(usfertilizer)
-require(getFertilizer)
+require(ggfertilizer)
 require(dplyr)
 require(ggplot2)
 data("us_fertilizer_county")
@@ -97,7 +96,7 @@ us_plot +
 ```
 
 
-For more details about mapping fertilizer data, please see this [vignettes](https://wenlong-liu.github.io/getFertilizer/articles/US_maps.html)
+For more details about mapping fertilizer data, please see this [vignettes](https://wenlong-liu.github.io/ggfertilizer/articles/US_maps.html)
 
 ### Visualize the fertilizer data for different states.
 
@@ -108,8 +107,8 @@ For more details about mapping fertilizer data, please see this [vignettes](http
 
 ## Comments and Questions
 
-If you have any problems or questions, feel free to open an issue [here](https://github.com/wenlong-liu/getFertilizer/issues).
+If you have any problems or questions, feel free to open an issue [here](https://github.com/wenlong-liu/ggfertilizer/issues).
 
 ## Lisence
 
-[GPL](https://github.com/wenlong-liu/getFertilizer/blob/master/LICENSE)
+[GPL](https://github.com/wenlong-liu/ggfertilizer/blob/master/LICENSE)

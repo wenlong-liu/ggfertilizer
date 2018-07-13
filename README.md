@@ -1,16 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# getFertilizer
+# ggfertilizer
 
-![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/getFertilizer)
+![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ggfertilizer)
 [![Travis-CI Build
-Status](https://travis-ci.org/wenlong-liu/getFertilizer.svg?branch=master)](https://travis-ci.org/wenlong-liu/getFertilizer)
+Status](https://travis-ci.org/wenlong-liu/ggfertilizer.svg?branch=master)](https://travis-ci.org/wenlong-liu/ggfertilizer)
 [![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/wenlong-liu/getFertilizer?branch=master&svg=true)](https://ci.appveyor.com/project/wenlong-liu/getFertilizer)
-[![](https://cranlogs.r-pkg.org/badges/getFertilizer)](https://cran.r-project.org/package=getFertilizer)
+Status](https://ci.appveyor.com/api/projects/status/github/wenlong-liu/ggfertilizer?branch=master&svg=true)](https://ci.appveyor.com/project/wenlong-liu/ggfertilizer)
+[![](https://cranlogs.r-pkg.org/badges/ggfertilizer)](https://cran.r-project.org/package=ggfertilizer)
 [![metacran
-downloads](http://cranlogs.r-pkg.org/badges/grand-total/getFertilizer?color=ff69b4)](https://cran.r-project.org/package=getFertilizer)
+downloads](http://cranlogs.r-pkg.org/badges/grand-total/ggfertilizer?color=ff69b4)](https://cran.r-project.org/package=ggfertilizer)
 
 ## Retrieve, Summarize and Visualize the Fertilizer Data in USA
 
@@ -23,7 +23,7 @@ This package can be installed via github using devtools.
 
 ``` r
 # install.package("devtools")   #In case you have not installed it.
-devtools::install_github("wenlong-liu/getFertilizer")
+devtools::install_github("wenlong-liu/ggfertilizer")
 ```
 
 ## Quick Start
@@ -31,8 +31,7 @@ devtools::install_github("wenlong-liu/getFertilizer")
 ### Import data and libraries
 
 ``` r
-require(usfertilizer)
-require(getFertilizer)
+require(ggfertilizer)
 require(dplyr)
 #> Warning: package 'dplyr' was built under R version 3.5.1
 require(ggplot2)
@@ -72,7 +71,7 @@ head(plot_data)
 plot <- plot_data %>% 
   top_n(10, Quantity) %>%
   ggplot(aes(x=reorder(County, Quantity), Quantity, fill = Quantity))+
-  scale_fill_gradient(low = "blue", high = "darkblue")+
+  scale_fill_gradient(low = "yellow", high = "brown")+
   geom_col()+
   ggtitle(paste("Top 10 counties with most N fertilizer application in the year of", Year)) + 
   scale_y_continuous(name = "Nitrogen from commecial fertilization (kg)")+
@@ -116,7 +115,7 @@ us_plot +
 
 For more details about mapping fertilizer data, please see this
 [vignettes of plotting us maps of
-fertilizer.](https://wenlong-liu.github.io/getFertilizer/articles/US_maps.html)
+fertilizer.](https://wenlong-liu.github.io/ggfertilizer/articles/US_maps.html)
 
 ### Example 3: Visualize the fertilizer data for certain states or counties.
 
@@ -141,7 +140,7 @@ state_plot
 
 For more details about mapping fertilizer data, please see this
 [vignettes of plotting state
-maps](https://wenlong-liu.github.io/getFertilizer/articles/State_fertilizer_maps.html)
+maps](https://wenlong-liu.github.io/ggfertilizer/articles/State_fertilizer_maps.html)
 
 ### Generate summaries plots.
 
@@ -150,14 +149,14 @@ maps](https://wenlong-liu.github.io/getFertilizer/articles/State_fertilizer_maps
 ## Comments and Questions
 
 If you have any problems or questions, feel free to open an issue
-[here](https://github.com/wenlong-liu/getFertilizer/issues).
+[here](https://github.com/wenlong-liu/ggfertilizer/issues).
 
 ## Lisence
 
-[GPL](https://github.com/wenlong-liu/getFertilizer/blob/master/LICENSE)
+[GPL](https://github.com/wenlong-liu/ggfertilizer/blob/master/LICENSE)
 
 ## Code of conduct
 
 Please note that this project is released with a [Contributor Code of
-Conduct](https://github.com/wenlong-liu/getFertilizer/blob/master/CONDUCT.md).
+Conduct](https://github.com/wenlong-liu/ggfertilizer/blob/master/CONDUCT.md).
 By participating in this project you agree to abide by its terms.

@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//index.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//index.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//reference/check_boundary.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//reference/check_boundary.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//reference/check_list.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//reference/check_list.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//reference/data_overview.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//reference/data_overview.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//reference/data_preparation.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//reference/data_preparation.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//reference/fertilizer.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//reference/fertilizer.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//reference/getFertilizer.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//reference/get_FIPS.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//reference/get_data.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//reference/get_data.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//reference/get_FIPS.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//reference/ggfertilizer.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//reference/map_us_fertilizer.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//reference/map_us_fertilizer.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//reference/theme_map_fertilizer.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//reference/theme_map_fertilizer.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//articles/Generate_plots.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//articles/Generate_plots.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//articles/Get_started.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//articles/Get_started.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//articles/State_fertilizer_maps.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//articles/State_fertilizer_maps.html</loc>
   </url>
   <url>
-    <loc>https://wenlong-liu.github.io/getFertilizer//articles/US_maps.html</loc>
+    <loc>https://wenlong-liu.github.io/ggfertilizer//articles/US_maps.html</loc>
   </url>
 </urlset>

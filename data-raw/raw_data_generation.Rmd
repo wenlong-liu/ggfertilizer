@@ -1,4 +1,4 @@
----
+ggfertilizer---
 title: "Raw_data_generation"
 author: "Wenlong"
 date: "4/8/2018"
@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This file will generate raw data for R package: getFertilizer.
+This file will generate raw data for R package: ggfertilizer.
 
 ```{r}
 require(dplyr)

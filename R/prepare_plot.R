@@ -32,7 +32,7 @@
 #' @keywords datasets tidydata
 #' @seealso \code{link(data_overview), link(get_FIPS), link(get_data)}
 #' @examples
-#' require(getFertilizer)
+#' require(ggfertilizer)
 #' require(usfertilizer)
 #' data("us_fertilizer_county")
 #'

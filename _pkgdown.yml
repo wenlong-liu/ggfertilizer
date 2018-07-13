@@ -1,5 +1,5 @@
-title: getFertilizer
-url: https://wenlong-liu.github.io/getFertilizer/
+ggfertilizertitle: ggfertilizer
+url: https://wenlong-liu.github.io/ggfertilizer/
 
 template:
   params:
@@ -36,7 +36,7 @@ navbar:
       href: news/index.html
     - icon: fa-github fa-lg
       text: "Github"
-      href: https://github.com/wenlong-liu/getFertilizer
+      href: https://github.com/wenlong-liu/ggfertilizer
     - icon: fa-twitter fa-lg
       text: "Twitter"
       href: https://twitter.com/tianya0423

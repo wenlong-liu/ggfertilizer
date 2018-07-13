@@ -27,7 +27,7 @@ fertilizer
 This is a sample dataset from usfertilizer.   Please visit <https://wenlong-liu.github.io/usfertilizer>. for more details.
 }
 \examples{
-  require(getFertilizer)
+  require(ggfertilizer)
   data(fertilizer)
 }
 \keyword{datasets}

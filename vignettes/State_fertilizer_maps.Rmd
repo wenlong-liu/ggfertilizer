@@ -21,8 +21,7 @@ knitr::opts_chunk$set(
 
 ## Import libraries and data
 ```{r}
-require(getFertilizer)
-require(usfertilizer)
+require(ggfertilizer)
 require(ggplot2)
 require(ggsn)
 data("us_fertilizer_county")
@@ -61,7 +60,7 @@ carolinas = c("NC", "SC")
 # draw the maps
 state_plot <- map_us_fertilizer(data = us_fertilizer_county, Year = Year, Nutrient = Nutrient,
                              Farm_Type = Farm_Type, Input_Type = Input_Type, State = carolinas,
-                             viridis_palette = "inferno", level = level, north = TRUE) +
+                             viridis_palette = "inferno", level = level, add_north = TRUE) +
 
   ggtitle(paste(Nutrient, " from ", Input_Type, " input to ", Farm_Type, " in the year of ",Year,
                      " at ", level, " level",sep = ""))

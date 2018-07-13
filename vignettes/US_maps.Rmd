@@ -1,4 +1,4 @@
----
+ggfertilizer---
 title: "Visualize fertilizer data in U.S. maps"
 author: "Wenlong Liu"
 date: "`r Sys.Date()`"
@@ -22,8 +22,7 @@ knitr::opts_chunk$set(
 # Plotting data in US maps.
 ## Import libraries and dataset.
 ```{r}
-require(getFertilizer)
-require(usfertilizer)
+require(ggfertilizer)
 require(ggplot2)
 data("us_fertilizer_county")
 data = us_fertilizer_county

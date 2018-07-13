@@ -1,4 +1,4 @@
 library(testthat)
-library(getFertilizer)
+library(ggfertilizer)
 
-test_check("getFertilizer")
+test_check("ggfertilizer")

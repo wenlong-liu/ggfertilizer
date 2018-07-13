@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>fertilizer — fertilizer • ggfertilizer</title>
+<title>ggfertilizer: Retrieve, Summarize and Visualize the Fertilizer Data in USA — ggfertilizer • ggfertilizer</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="fertilizer — fertilizer" />
+<meta property="og:title" content="ggfertilizer: Retrieve, Summarize and Visualize the Fertilizer Data in USA — ggfertilizer" />
 
-<meta property="og:description" content="This is a sample dataset from usfertilizer.   Please visit &amp;lt;https://wenlong-liu.github.io/usfertilizer&amp;gt;. for more details." />
+<meta property="og:description" content="Summarize the count-level fertilizer data in USA from 1945 to 2012.  Users can quickly retrieve
+fertilizer data in Tidy format. There are also built-in APIs for users to conduct spatial analysis and
+provide reproducible research output." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -139,50 +141,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>fertilizer</h1>
-    <small class="dont-index">Source: <a href='https://github.com/wenlong-liu/ggfertilizer/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>fertilizer.Rd</code></div>
+    <h1>ggfertilizer: Retrieve, Summarize and Visualize the Fertilizer Data in USA</h1>
+    <small class="dont-index">Source: <a href='https://github.com/wenlong-liu/ggfertilizer/blob/master/R/ggfertilizer.R'><code>R/ggfertilizer.R</code></a></small>
+    <div class="hidden name"><code>ggfertilizer.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This is a sample dataset from usfertilizer.   Please visit &lt;https://wenlong-liu.github.io/usfertilizer&gt;. for more details.</p>
+    <p>Summarize the count-level fertilizer data in USA from 1945 to 2012.  Users can quickly retrieve
+fertilizer data in Tidy format. There are also built-in APIs for users to conduct spatial analysis and
+provide reproducible research output.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>fertilizer</span></pre>
         
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>A data frame with 31,279 rows and 12 variables:</p><dl class='dl-horizontal'>
-  <dt>FIPS</dt><dd><p>FIPS is a combination of state and county codes, in character format.</p></dd>
-  <dt>State</dt><dd><p>The state abbr. of U.S.</p></dd>
-  <dt>County</dt><dd><p>County name in U.S.</p></dd>
-  <dt>ALAND</dt><dd><p>The land area in each county, unit: km squared</p></dd>
-  <dt>AWATER</dt><dd><p>The water area in each county, unit: km squared</p></dd>
-  <dt>INTPTLAT</dt><dd><p>The latitude of centriod in each county, e.g. 32.53638</p></dd>
-  <dt>INTPTLONG</dt><dd><p>The longitude of centriod in each county, e.g. -86.64449</p></dd>
-  <dt>Quantity</dt><dd><p>The quantity of fertilizeation as N or P, e.g. kg N or kg P</p></dd>
-  <dt>Year</dt><dd><p>The year of estimated data, e.g. 1994</p></dd>
-  <dt>Nutrient</dt><dd><p>The fertilizer type, e.g. N or P</p></dd>
-  <dt>Farm.Type</dt><dd><p>The land use type of fertilizer, e.g. farm and nonfarm</p></dd>
-  <dt>Input.Type</dt><dd><p>The input type of nutrient, e.g. Fertilizer or Manure</p></dd>
-  ...
-</dl>
+    <div class='dont-index'><p>Useful links:</p><ul>
+<li><p><a href='https://github.com/wenlong-liu/ggfertilizer'>https://github.com/wenlong-liu/ggfertilizer</a></p></li>
+<li><p><a href='https://wenlong-liu.github.io/ggfertilizer'>https://wenlong-liu.github.io/ggfertilizer</a></p></li>
+<li><p>Report bugs at <a href='https://github.com/wenlong-liu/ggfertilizer/issues'>https://github.com/wenlong-liu/ggfertilizer/issues</a></p></li>
+</ul></div>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>require</span>(<span class='no'>ggfertilizer</span>)
-  <span class='fu'>data</span>(<span class='no'>fertilizer</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
-      <li><a href="#format">Format</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#see-also">See also</a></li>
+          </ul>
+
+    <h2>Author</h2>
+    
+<strong>Maintainer</strong>: Wenlong Liu <a href='mailto:wliu14@ncsu.edu'>wliu14@ncsu.edu</a> (0000-0002-2271-3541)
+
 
   </div>
 </div>

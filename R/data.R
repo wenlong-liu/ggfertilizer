@@ -19,7 +19,7 @@
 #'   ...
 #' }
 #' @examples
-#'   require(getFertilizer)
+#'   require(ggfertilizer)
 #'   data(fertilizer)
 
 "fertilizer"

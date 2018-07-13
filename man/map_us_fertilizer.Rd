@@ -10,7 +10,7 @@ map_us_fertilizer(data = "us_fertilizer_county", Year, Nutrient,
   facet = NULL, trans = "identity", fill_var_type = NULL,
   viridis_palette = "viridis", viridis_direction = -1, viridis_end = 0.9,
   projection = NULL, parameters = NULL, orientation = NULL, xlim = NULL,
-  ylim = NULL, north = FALSE, na.rm = TRUE, coord_fix_ratio = 1.3,
+  ylim = NULL, add_north = FALSE, na.rm = TRUE, coord_fix_ratio = 1.3,
   map_theme = theme_map_fertilizer())
 }
 \arguments{
@@ -62,7 +62,7 @@ If -1, the order of colors is reversed.}
 
 \item{ylim}{y axis limits for map project.}
 
-\item{north}{logic.  If TRUE, the ggplot object will include a states_shape df to
+\item{add_north}{logic.  If TRUE, the ggplot object will include a states_shape df to
 draw north symbols and scale bars.}
 
 \item{na.rm}{How to deal with NA values. Default: TRUE.}
@@ -79,7 +79,7 @@ visualize the fertilizer data in the whole contiouse U.S.
 }
 \examples{
 require(usfertilizer)
-require(getFertilizer)
+require(ggfertilizer)
 data("us_fertilizer_county")
 
 us_plot <- map_us_fertilizer(

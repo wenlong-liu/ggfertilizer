@@ -1,4 +1,4 @@
----
+ggfertilizer---
 title: "generate plots"
 author: "Wenlong Liu"
 date: "7/10/2018"
@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
 
 ```{r}
-require(getFertilizer)
+require(ggfertilizer)
 require(ggplot2)
 data = fertilizer
 ```

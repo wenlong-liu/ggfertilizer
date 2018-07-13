@@ -1,6 +1,6 @@
 #' @keywords internal
 #' @docType package
-#' @name getFertilizer
+#' @name ggfertilizer
 "_PACKAGE"
 
 NULL

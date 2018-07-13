@@ -64,7 +64,7 @@ The built-in function of data preparation for mapping and plotting.
 If you want to fetch the whole data, please prefer using get_data().
 }
 \examples{
-require(getFertilizer)
+require(ggfertilizer)
 require(usfertilizer)
 data("us_fertilizer_county")
 

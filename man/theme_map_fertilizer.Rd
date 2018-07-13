@@ -20,7 +20,7 @@ https://www.rdocumentation.org/packages/ggthemes/versions/3.5.0/source
 }
 \examples{
 require(usfertilizer)
-require(getFertilizer)
+require(ggfertilizer)
 data(us_fertilizer_county)
 # Generate a map.
 us_plot <- map_us_fertilizer(data = us_fertilizer_county,

@@ -1,7 +1,7 @@
-Package: getFertilizer
+Package: ggfertilizer
 Type: Package
 Title: Retrieve, Summarize and Visualize the Fertilizer Data in USA
-Version: 0.0.3
+Version: 0.0.4
 Authors@R: c(
     person("Wenlong", "Liu", role = c("aut","cre"),
         email = 'wliu14@ncsu.edu',
@@ -12,8 +12,8 @@ Description: Summarize the count-level fertilizer data in USA from 1945 to 2012.
     fertilizer data in Tidy format. There are also built-in APIs for users to conduct spatial analysis and 
     provide reproducible research output. 
 License: GPL-3 + file LICENSE
-URL: https://github.com/wenlong-liu/getFertilizer, https://wenlong-liu.github.io/getFertilizer
-BugReports: https://github.com/wenlong-liu/getFertilizer/issues
+URL: https://github.com/wenlong-liu/ggfertilizer, https://wenlong-liu.github.io/ggfertilizer
+BugReports: https://github.com/wenlong-liu/ggfertilizer/issues
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 2.10),

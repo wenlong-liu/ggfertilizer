@@ -27,7 +27,7 @@
 #' @param orientation orientation for map projection.
 #' @param xlim x axis limits for map project.
 #' @param ylim y axis limits for map project.
-#' @param north logic.  If TRUE, the ggplot object will include a states_shape df to
+#' @param add_north logic.  If TRUE, the ggplot object will include a states_shape df to
 #'     draw north symbols and scale bars.
 #' @param na.rm How to deal with NA values. Default: TRUE.
 #' @param coord_fix_ratio the ratio for fixed coordinate system, default: 1.3.
@@ -43,7 +43,7 @@
 #' @keywords map
 #' @examples
 #' require(usfertilizer)
-#' require(getFertilizer)
+#' require(ggfertilizer)
 #' data("us_fertilizer_county")
 #'
 #' us_plot <- map_us_fertilizer(
@@ -84,7 +84,7 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
                               ylim = NULL,
 
                               # others
-                              north = FALSE,
+                              add_north = FALSE,
                               na.rm = TRUE,
                               coord_fix_ratio = 1.3,
                               map_theme = theme_map_fertilizer()){
@@ -265,7 +265,7 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
   }
 
   # check if want to add states_shape or not.
-  if (north){
+  if (add_north){
   # add stateshapes for further plotting.
   us_plot$states_shape = states_shape
   }
@@ -284,7 +284,7 @@ map_us_fertilizer <- function(data = "us_fertilizer_county",
 #' @author Wenlong Liu
 #' @examples
 #' require(usfertilizer)
-#' require(getFertilizer)
+#' require(ggfertilizer)
 #' data(us_fertilizer_county)
 #' # Generate a map.
 #' us_plot <- map_us_fertilizer(data = us_fertilizer_county,
