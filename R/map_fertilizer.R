@@ -33,7 +33,7 @@
 #' @param coord_fix_ratio the ratio for fixed coordinate system, default: 1.3.
 #' @param map_theme the map theme for dataset. Default: theme_map_fertilizer()
 #' @import ggplot2 maps usfertilizer
-#' @import mapproj
+#' @importFrom mapproj mapproject
 #' @importFrom stringr str_pad
 #' @importFrom viridis scale_fill_viridis
 #' @importFrom scales percent comma
